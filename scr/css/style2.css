@@ -436,8 +436,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #363333;}
     -o-transition:.3s linear;
     transition: .3s linear;
 }
-.single-explore-img{position:relative;overflow: hidden;}
-.single-explore-img:before {
+.single-explore-img:after {
     position: absolute;
     content: "";
     top: 0;
@@ -929,5 +928,33 @@ nav.navbar.bootsnav .navbar-toggle i{color: #363333;}
 @keyframes example {
     0%   {bottom:0px;}
     100%  {bottom:7px;}
+}
+/*button*/
+/* .button-container {
+    display: flex;
+    justify-content: space-between; /* hoặc space-around để có khoảng trắng cả hai bên của các nút */
+/*
+
+.button{
+    margin: 0;
+    width: 100px;
+    height: 35px;
+    font-size: 12px;
+    background: transparent;
+    color: #767f86;
+    border: 1px solid #d3d6d9;
+    border-radius: 3px; /* Thêm padding để tăng kích thước của nút */
+
+    .button-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* hoặc thay đổi 100px thành kích thước mong muốn */
+        gap: 10px; /* thêm padding để tạo khoảng cách */
+      }
+    
+
+.item-container {
+        display: flex;
+        justify-content: space-between; /* hoặc space-around để có khoảng trống cả hai bên của các item */
+        padding: 10px; /* thêm padding để tạo khoảng cách */
 }
 /*========================Thank you=================
