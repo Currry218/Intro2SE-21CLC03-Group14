@@ -1,0 +1,28 @@
+body {
+    background-color: rgba(29, 24, 24, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Verdana,sans-serif;
+}
+
+.cascading-right {
+    margin-right: -50px;
+  }
+
+/*content*/
+.content {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(autofill, minmax(350px, 1fr)); 
+}
+
+.content-item > img{
+    width: 100%;
+}
+
+.content .content-item {
+    padding: 30px;
+    margin: 20px;
+}
