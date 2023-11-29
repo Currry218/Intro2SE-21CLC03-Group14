@@ -1,32 +1,4 @@
-/*==================================
-* Author        : "ThemeSine"
-* Template Name : Listrace  HTML Template
-* Version       : 1.0
-==================================== */
 
-/*==================================
-font-family: 'Roboto', sans-serif;
-==================================== */
-
-
-/*=========== TABLE OF CONTENTS ===========
-1.  General css (Reset code)
-2.  Header-top
-3.  Top-area
-4.  Welcome-hero
-5.  List-topics
-6.  Works  
-7.  Explore
-8.  Reviews
-9.  Counter
-10. Blog
-11. Subscribe
-12. Footer
-==========================================*/
-
-/*-------------------------------------
-		1.General css (Reset code)
---------------------------------------*/
 *{
     padding: 0;
     margin: 0;
@@ -49,6 +21,16 @@ body{
 	overflow-x:hidden;
 }
 
+.containerpay{
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.container_button{
+    max-width: 420px;
+    display: flex;
+    gap: 1em;
+}
 a,a:hover,a:active,a:focus {
 	display:inline-block;
 	text-decoration:none;
@@ -183,7 +165,7 @@ nav.navbar.bootsnav {
     padding: 34px 0px;
     text-transform:capitalize;
 }
-.navbar-header a.navbar-brand span{display: inline-block;color:#ff545a;text-transform:capitalize;}
+.navbar-header a.navbar-brand span{display: inline-block;color:#363333;text-transform:capitalize;}
 
 .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {padding:30px 0px;}
 /*.navbar-brand*/
@@ -201,8 +183,8 @@ nav.navbar.bootsnav ul.nav > li > a {
     transition: 0.3s linear;
 }
 nav.navbar.bootsnav ul.nav > li > a {padding:34px 21px;}
-nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus{color: #ff545a;}
-nav.navbar.bootsnav ul.nav > li.active>a {color: #ff545a;}
+nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus{color: #363333;}
+nav.navbar.bootsnav ul.nav > li.active>a {color: #363333;}
 
 nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after {
     content: "";
@@ -223,7 +205,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     -webkit-box-shadow: inset 0 0 8px #000;
 }
 .menu-ui-design::-webkit-scrollbar-thumb {
-  background-color: #ff545a;
+  background-color: #363333;
 }
 /*.menu-ui-design*/
 
@@ -231,11 +213,11 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 nav.navbar.bootsnav .navbar-toggle {
     position: relative;
     background-color: transparent;
-    border: 1px solid #ff545a;
+    border: 1px solid #363333;
     padding: 10px;
     top: 0;
 }
-nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
+nav.navbar.bootsnav .navbar-toggle i{color: #363333;}
 /*.navbar-toggle */
 
 /*-------------------------------------
@@ -243,7 +225,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 --------------------------------------*/
 .welcome-hero {
     position: relative;
-    background:url(../images/welcome-hero/banner.jpg)no-repeat;
+    background:url(scr/img/welcome-hero/banner.jpg)no-repeat;
     background-position:center;
     background-size:cover;
     text-align: center;
@@ -320,7 +302,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     color:  #fff;
     width:  170px;
     height:  70px;
-    background:  #ff545a;
+    background:  #363333;
     text-transform:  capitalize;
     margin-left:  30px;
     border-radius: 3px;
@@ -330,7 +312,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     -o-transition: 0.3s linear; 
     transition: 0.3s linear;
 }
-.welcome-hero-btn:hover{/*background: #fd4043;*/background: #f43032;}
+.welcome-hero-btn:hover{background: #363333;}
 
 .welcome-hero-btn svg {
     width:  14px;
@@ -375,7 +357,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 .single-list-topics-content:hover h2>a,.single-list-topics-content:hover p{color: #fff!important;}
 .single-list-topics-content:hover{
     color: #fff;
-    background:#ff545a;
+    background:#363333;
     box-shadow: 0 5px 10px rgba(71,71,71,.4);
 }
 
@@ -415,7 +397,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 .single-how-works p {margin-bottom: 25px;text-transform: initial;}
 
 .single-how-works-icon [class^="flaticon-"]:before,.single-how-works-icon [class*=" flaticon-"]:before,.single-how-works-icon [class^="flaticon-"]:after,.single-how-works-icon [class*=" flaticon-"]:after {font-size: 35px;}
-.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:after,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:after {color:#ff545a;}
+.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:after,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:after {color:#363333;}
 
 .welcome-hero-btn.how-work-btn {
     display: inline-block;
@@ -431,8 +413,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 
 .single-how-works:hover h2 a,.single-how-works:hover p{color: #fff;}
 .single-how-works:hover .single-how-works-icon{background: #fff;}
-.single-how-works:hover .welcome-hero-btn.how-work-btn{background: #fff;color: #ff545a;}
-.single-how-works:hover{box-shadow: 0 0px 10px rgba(71,71,71,.4);background: #ff545a;}
+.single-how-works:hover .welcome-hero-btn.how-work-btn{background: #fff;color: #363333;}
+.single-how-works:hover{box-shadow: 0 0px 10px rgba(71,71,71,.4);background: #363333;}
 
 /*-------------------------------------
         7. Explore
@@ -489,7 +471,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     width: 83px;
     height: 21px;
     line-height: 21px;
-    background: #ff545a;
+    background: #363333;
     border-radius: 3px;
     color: #fcfcfc;
     text-transform: capitalize;
@@ -679,7 +661,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     position:relative;
     display: flex;
     align-items: center;
-    background:url(../../assets/images/counter/counter-banner.jpg)no-repeat fixed;
+    background:url(scr/img/counter/counter-banner.jpg)no-repeat fixed;
     background-position:center;
     background-size:cover;
     padding:127px 0 120px;
@@ -747,7 +729,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     text-transform: uppercase;
 }
 
-.single-blog-item:hover h2 a {color:#ff545a;}
+.single-blog-item:hover h2 a {color:#363333;}
 .single-blog-item:hover{
     box-shadow: 0 10px 20px rgba(21,19,19,.4);
 }
@@ -811,7 +793,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     position: absolute;
     top: 0;
     right: 0;
-    background: #ff545a;
+    background: #363333;
     display: inline-block;
     width: 180px;
     height: 60px;
@@ -898,8 +880,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     border-radius: 50%;
 }
 .footer-social span {margin-right:15px;margin-left: 0;color: #a5adb3;}
-.footer-social span:hover{color: #ff545a;}
-.footer-social a:hover {background:#ff545a;color: #fff;}
+.footer-social span:hover{color: #363333;}
+.footer-social a:hover {background:#363333;color: #fff;}
 
 /*===============================
     Scroll Top
@@ -916,8 +898,8 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     font-size: 20px;
     cursor: pointer;
     color: #fff;
-    background:#ff545a;
-	border:1px solid #ff545a;
+    background:#363333;
+	border:1px solid #363333;
 	border-radius:50%;
 	-webkit-transition: .5s; 
 	-moz-transition:.5s; 
@@ -928,7 +910,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 }
 #scroll-Top  .return-to-top:hover {
     background:#f43032;
-	border:1px solid #ff545a;
+	border:1px solid #363333;
 }
 
 #scroll-Top  .return-to-top i{
