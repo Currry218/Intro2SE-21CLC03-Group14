@@ -26,11 +26,11 @@ body{
     margin: 0 auto;
     padding: 0 16px;
 }
-.container_button{
+/* .container_button{
     max-width: 420px;
     display: flex;
     gap: 1em;
-}
+} */
 a,a:hover,a:active,a:focus {
 	display:inline-block;
 	text-decoration:none;
