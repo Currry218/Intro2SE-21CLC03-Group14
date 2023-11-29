@@ -77,8 +77,8 @@ html,body{height: 100%;}
   transition: opacity 0.3s 0.3s ease; 
   opacity: 0;
 }
-
-/* section-header */
+/*
+section-header 
 .section-header{
     position: relative;
     text-align: center;
@@ -95,10 +95,10 @@ html,body{height: 100%;}
 .section-header p{
     font-size:16px;
 }
-/* section-header */
+ section-header 
 .fix{position: relative;clear: both;}
-/*=============Style css=========*/
-
+=============Style css=========
+*/
 
 /*-------------------------------------
         2. Header-top
@@ -109,54 +109,18 @@ html,body{height: 100%;}
 
 .header-top-left li,.header-top-right li  {display: inline-block;}
 
-/*.select-opt*/
-.select-opt,.header-top-contact{
-    padding: 10px 18px;
-    border-right: 1px solid #f6f8fa;
-}
-.header-top-contact{
-    border-right: 0;
-    border-left: 1px solid #f6f8fa;
-    font-size: 12px;
-}
-.select-opt select {
-    border: none;
-    cursor:pointer;
-    color:#a7b0ba;
-    font-size: 12px;
-    font-weight: 300;
-}
-.select-opt option{
-    color:#a7b0ba;
-    text-transform: uppercase;
-}
-.select-opt a span.lnr-magnifier:before {
-    font-size: 12px;
-    color: #373939;
-}
-.select-opt a span.lnr-magnifier:before {
-    font-size: 12px;
-    color: #373939;
-}
-/*.select-opt*/
 
-.header-top-right ul li a{
-    color:#a7b0ba;
-    font-size: 12px;
-    font-weight: 300;
-}
-
-
+/* 
 /*-------------------------------------
         3. Top-area
---------------------------------------*/
+--------------------------------------
 nav.navbar.bootsnav {
     background-color:#fff;
     border-bottom: transparent;
 }
 .wrap-sticky nav.navbar.bootsnav.sticked {background-color: #fff;box-shadow: 0 2px 5px rgba(0,0,0,.2);}
 
-/*.navbar-brand*/
+.navbar-brand
 .navbar-header a.navbar-brand,.navbar-header a.navbar-brand:hover,.navbar-header a.navbar-brand:focus {
     display: inline-block;
     color: #1b1e20;
@@ -168,9 +132,9 @@ nav.navbar.bootsnav {
 .navbar-header a.navbar-brand span{display: inline-block;color:#363333;text-transform:capitalize;}
 
 .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {padding:30px 0px;}
-/*.navbar-brand*/
+.navbar-brand
 
-/*.nav li*/
+.nav li
 nav.navbar.bootsnav ul.nav > li > a {
     color: #859098;
     font-size: 14px;
@@ -194,9 +158,9 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     margin-left: 15px;
 }
 .wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a{padding:34px 21px;}
-/*.nav li*/
+.nav li
 
-/*.menu-ui-design*/
+.menu-ui-design
 .menu-ui-design{overflow-y:scroll;height: 350px;}
 .menu-ui-design::-webkit-scrollbar {
     width:5px;
@@ -207,9 +171,9 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 .menu-ui-design::-webkit-scrollbar-thumb {
   background-color: #363333;
 }
-/*.menu-ui-design*/
+.menu-ui-design
 
-/*.navbar-toggle */
+.navbar-toggle 
 nav.navbar.bootsnav .navbar-toggle {
     position: relative;
     background-color: transparent;
@@ -218,14 +182,14 @@ nav.navbar.bootsnav .navbar-toggle {
     top: 0;
 }
 nav.navbar.bootsnav .navbar-toggle i{color: #363333;}
-/*.navbar-toggle */
+.navbar-toggle */
 
 /*-------------------------------------
         4.  Welcome-hero
 --------------------------------------*/
 .welcome-hero {
     position: relative;
-    background:url(scr/img/welcome-hero/banner.jpg)no-repeat;
+    background:url(/scr/img/welcome-hero/banner.jpg)no-repeat;
     background-position:center;
     background-size:cover;
     text-align: center;
