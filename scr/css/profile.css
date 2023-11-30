@@ -1,0 +1,25 @@
+.information {
+    padding-top: 40px;
+    background-color:rgba(0,0,0,0.8);
+    color: #ffff;
+    border-radius: 20px;
+}
+
+.ms-4 img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.name {
+   margin-top: 130px;
+   padding-left: 20px;
+}
+
+.e3 {
+    padding-right: 30px;
+}
+
+.h5 {
+    color: #ffffff;
+}
+

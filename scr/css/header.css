@@ -76,28 +76,11 @@ li {
 .menu {
     display: flex;
     justify-content: flex-end;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .menu li {
     padding-left: 30px
-}
-
-.has-sub1 {
-    position: relative;
-}
-
-.has-sub1:hover .sub-menu, .has-sub2:hover .sub-sub-menu {
-    display:block;
-}
-
-.sub-menu {
-    padding: 0;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    /* background-color: rgba(7, 28, 30, 0.43); */
 }
 
 /* .sub-sub-menu {
