@@ -119,5 +119,12 @@ button {background: transparent;border: 0;font-size: 12px;}
     border-right: 1px solid #dde0e4;
 }
 
+.explore-price-genne{
+    display: inline-block;
+    padding-right: 12px;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #dde0e4;
+}
+
 .single-explore-txt.bg-theme-2 .explore-map-icon a svg:hover{color: #00c437;}
 .single-explore-item:hover{box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4);}
