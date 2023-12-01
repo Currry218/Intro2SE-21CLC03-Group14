@@ -76,7 +76,6 @@ li {
 .menu {
     display: flex;
     justify-content: flex-end;
-    padding-top: 5px;
 }
 
 .menu li {
