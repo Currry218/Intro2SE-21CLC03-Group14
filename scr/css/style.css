@@ -59,3 +59,105 @@ body {
     margin-top: 5px;
     font-weight: 700;
 }
+/*-------------------------------------
+        4.  Welcome-hero
+--------------------------------------*/
+.welcome-hero {
+    position: relative;
+    top: 70px;
+    background:url(/scr/img/welcome-hero/banner.jpg)no-repeat;
+    background-position:center;
+    visibility:hidden;
+    background-size:700px;
+    text-align: center;
+    height:700px;
+    z-index: 1;
+}
+.welcome-hero:before{
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(65,73,89,.65);
+    z-index: -1;
+}
+.welcome-hero-txt { padding-top: 155px;}
+
+.welcome-hero-txt h2 {
+    font-size: 48px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.4px;
+    line-height: 1.4;
+}
+.welcome-hero-txt p {
+    font-size: 18px;
+    color: #fcfcfc;
+    margin-top: 25px;
+}
+
+.welcome-hero-btn {
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+    font-size:  14px;
+    color:  #fff;
+    width:  170px;
+    height:  70px;
+    background:  #363333;
+    text-transform:  capitalize;
+    margin-left:  30px;
+    border-radius: 3px;
+    -webkit-transition: 0.3s linear; 
+    -moz-transition: 0.3s linear; 
+    -ms-transition: 0.3s linear; 
+    -o-transition: 0.3s linear; 
+    transition: 0.3s linear;
+}
+.welcome-hero-btn:hover{background: #363333;}
+
+.welcome-hero-btn svg {
+    width:  14px;
+    height:  auto;
+    margin-left:  12px;
+}
+
+
+#copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#cover {
+    width: 100%;
+    height: 200px;
+    background: url('/scr/img/welcome-hero/banner.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  
+  #avatar {
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    border: 5px solid white;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: url('/scr/img/blog/b2.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  
+  #follow-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: fit-content;
+  }
+

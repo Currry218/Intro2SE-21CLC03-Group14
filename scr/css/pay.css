@@ -23,7 +23,7 @@ body {
 .pay-contain{
     margin: 0;
     padding: 0;
-    top: 50px;
+    top: 70px;
     bottom: 50px;
 }
 
@@ -327,3 +327,12 @@ input:checked + .payment-method-item::before {
     }
 }
 /* end: Breakpoints */
+footer {
+    position: fixed; /* or 'absolute' depending on your requirements */
+    bottom: 0;
+    width: 100%;    
+    background-color: #343a40; /* Change this to your desired background color */
+    color: white; /* Set text color as needed */
+    text-align: center; /* Center-align text */
+    padding: 10px; /* Add padding as needed */
+}
