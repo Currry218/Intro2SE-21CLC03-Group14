@@ -1,0 +1,51 @@
+.container {
+    padding: 100px 200px 30px;
+}
+
+.container form {
+    background-color: white;
+    padding: 30px;
+    border: none;
+    border-radius: 20px;
+}
+
+.container form h {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.container form .btn {
+    background-color: black;
+    border: none;
+}
+/* responsive */
+/*Ipad ngang(1024 x 768)*/
+@media screen and (max-width: 1024px){
+    .container {
+        padding: 100px px 30px;
+    }
+}
+/*Ipad dọc(768 x 1024)*/
+@media screen and (max-width: 768px){
+    .container {
+        padding: 100px 60px 30px;
+    }
+}
+/*Tablet nhỏ(480 x 640)*/
+@media screen and (max-width: 480px){
+    .container {
+        padding: 100px 40px 30px;
+    }
+}
+/*Iphone(480 x 640)*/
+@media screen and (max-width: 320px){
+    .container {
+        padding: 100px 0;
+    }
+}
+/*Smart phone nhỏ*/
+@media screen and (max-width: 240px){
+    .container {
+        padding: 100px 0;
+    }
+}
