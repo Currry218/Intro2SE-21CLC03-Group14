@@ -1,5 +1,9 @@
+.menu {
+    padding-top: 10px
+}
+
 .container {
-    padding: 100px 200px 30px;
+    padding: 80px 200px 30px;
 }
 
 .container form {
@@ -17,30 +21,41 @@
 .container form .btn {
     background-color: black;
     border: none;
+    width: 100%;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+#discription {
+    padding: 40px;
+}
+
+#fileHelpId {
+    padding-bottom: 20px;
 }
 /* responsive */
 /*Ipad ngang(1024 x 768)*/
 @media screen and (max-width: 1024px){
     .container {
-        padding: 100px px 30px;
+        padding: 80px px 30px;
     }
 }
 /*Ipad dọc(768 x 1024)*/
 @media screen and (max-width: 768px){
     .container {
-        padding: 100px 60px 30px;
+        padding: 80px 60px 30px;
     }
 }
 /*Tablet nhỏ(480 x 640)*/
 @media screen and (max-width: 480px){
     .container {
-        padding: 100px 40px 30px;
+        padding: 80px 40px 30px;
     }
 }
 /*Iphone(480 x 640)*/
 @media screen and (max-width: 320px){
     .container {
-        padding: 100px 0;
+        padding: 80px 0;
     }
 }
 /*Smart phone nhỏ*/

@@ -1,17 +1,19 @@
 body {
-    background-color: rgba(29, 24, 24, 0.6);
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0;
-    font-family: Verdana,sans-serif;
 }
 
 .cascading-right {
     margin-right: -50px;
   }
 
+.menu {
+    padding-top: 10px;
+}
 /*content*/
+.container {
+    padding: 100px;
+}
 .content {
     display: grid;
     grid-gap: 20px;
