@@ -1,0 +1,25 @@
+
+  
+  .post-list {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .post-item {
+    top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .post-item h2 {
+    color: #333;
+  }
+  
+  .post-date {
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  
