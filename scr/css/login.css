@@ -14,6 +14,13 @@ body {
 .container {
     padding: 100px;
 }
+
+.container .btn {
+    background-color: black;
+    border: none;
+    color: white;
+}
+
 .content {
     display: grid;
     grid-gap: 20px;
