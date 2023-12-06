@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .product-container {
+    background-color: #ddd;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ddd;
+    display: flex;
+    flex-direction: column; /* Dàn trải dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+  }
+  
+  .product-image {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .product-details {
+    margin-top: 20px;
+  }
+  
+  .buy-button,
+  .add-to-cart-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .submit-feedback-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .user-feedback {
+    margin-top: 30px;
+  }
+  
+  .user-feedback h3 {
+    color: #333;
+  }
+  
+  .user-feedback p {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+  }
+  
+  /* Style the textarea */
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    box-sizing: border-box;
+  }
+  .comments-list {
+    margin-top: 20px;
+  }
+  
+  .comment-entry {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-entry p {
+    margin: 0;
+  }
+  

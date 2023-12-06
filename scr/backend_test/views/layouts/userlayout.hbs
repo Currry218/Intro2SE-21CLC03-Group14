@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+{{!-- <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="../css/book.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <title>BOOKEE</title>
+  <!-- For logo png -->
+	<link rel="shortcut icon" type="image/icon" href="/scr/img/logo/logo.png"/>
+</head> --}}
+
+{{>header}}
+
+<body>
+    <div class="header">
+    <div class="navbar">
+      <div class="logo"><a href="homepage_logined.html">BOOKEE</a></div>
+      <form>
+        <input type="text" name="search" placeholder="Searching books..." />
+        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </form>
+      <ul class ="menu d-flex me-0">
+        <li><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist</a></li>
+        <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        <li><a href="homepage.html"><i class="fa fa-sign-out-alt"></i> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+
+  {{!-- <section class="explore">
+    <div class="container">
+      <div class="explore-content">
+
+        <div class="product-head">
+          New books
+          <div class="row">
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <a href = #!><img src="/scr/img/explore/e1.jpg" alt="explore image"></a>
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">you want it darker</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 10 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">leonard cohen</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e2.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">Omestic Reader Overview</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">leonard cohen</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/book2.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">bungou stray dogs: BEAST</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">4.8</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">asagiri kafka</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-head">
+          Trending books
+          <div class="row">
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <a href = #!><img src="/scr/img/explore/e3.jpg" alt="explore image"></a>
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">And then there were none</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 10 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Agatha christie</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e4.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">Space cat</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Ruthven Todd</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e5.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">The soul of an octopus</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">4.8</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Sy Montgomery</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-head">
+          All books
+          <div class="row">
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <a href = #!><img src="/scr/img/explore/e1.jpg" alt="explore image"></a>
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">you want it darker</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 10 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">leonard cohen</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e2.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">Omestic Reader Overview</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">leonard cohen</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/book2.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">bungou stray dogs: BEAST</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">4.8</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">asagiri kafka</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <a href = #!><img src="/scr/img/explore/e3.jpg" alt="explore image"></a>
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">And then there were none</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 10 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Agatha christie</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e4.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">Space cat</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">5.0</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Ruthven Todd</a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  <img src="/scr/img/explore/e5.jpg" alt="explore image">
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="#!">The soul of an octopus</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">4.8</span>
+                    <a href="#!"> 7 ratings</a> 
+                    <span class="explore-price-box">
+                      price:
+                      <span class="explore-price">10$</span>
+                    </span>
+                    <span class="explore-price-genne">
+                      novel
+                    </span>
+                    <a  href="#!">Sy Montgomery</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!--/.explore-->
+  <!--explore end --> --}}
+
+{{body}}
+
+  <!--Footer-->
+  <footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+</body>
+</html>

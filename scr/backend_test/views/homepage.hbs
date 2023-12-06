@@ -1,0 +1,54 @@
+  <section class="explore">
+    <div class="container">
+      <div class="explore-content">
+
+        <div class="product-head">
+          New books
+          <div class="row">
+            {{#each _book}}
+            <div class=" col-md-4 col-sm-6">
+              <div class="single-explore-item">
+                <div class="single-explore-img">
+                  {{!-- <a href = #!><img src="/scr/img/explore/e1.jpg" alt="explore image"></a> --}}
+                  <a href = "/productpage/{{id}}"><img src="{{imagePath}}" alt="{{altImage}}"></a>
+                </div>
+                <div class="single-explore-txt bg-theme-5">
+                  <h2><a href="/productpage/{{bookid}}">{{title}}</a></h2>
+                  <p class="explore-rating-price">
+                    <span class="explore-rating">{{rate}}</span>
+                    <a href="/productpage/{{bookid}}">{{rate.length}} ratings</a> 
+                    <span class="explore-price-box">
+                      Price: <span class="explore-price">{{price}}$</span>
+                    </span>
+                    {{!-- <span class="explore-price-genne"> {{booktype}} </span> --}}
+                    <a  href="tacgia">{{author}} </a>
+                    <a  href="/shop/{{shopid}}">{{shop}} </a>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        
+        <div class="product-head">
+          Trending books
+          <div class="row">
+{{!-- Here --}}
+
+          </div>
+        </div>
+
+        <div class="product-head">
+          All books
+          <div class="row">
+{{!-- Here --}}
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!--/.explore-->
+  <!--explore end -->
