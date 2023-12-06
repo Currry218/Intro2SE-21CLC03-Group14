@@ -1,6 +1,11 @@
-.product-head .annouce {
-    font-size: 18px;
-    font-weight: 500;
+.annouce {
+    font-size: 15px;
     text-align: left;
-    padding: 70px 0 30px;
+    padding-top: 100px;
+    color: white;
+}
+
+hr {
+    width: 100%;
+    color: white;
 }

@@ -1,5 +1,6 @@
 .information {
     padding-top: 30px;
+    margin-bottom: 30px;
     background-color:rgba(0,0,0,0.8);
     color: #ffff;
     border-radius: 0 0 20px 20px;
@@ -12,12 +13,6 @@
 
 .product-head {
     padding-bottom: 50px;
-}
-
-.product-head h1 {
-    font-weight:500;
-    font-size: 25px;
-    text-align: left;
 }
 
 .product-head .btn {
