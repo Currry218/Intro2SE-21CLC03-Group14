@@ -384,7 +384,7 @@ body {
   
   .accept-btn,
   .remove-btn {
-    background-color: #4CAF50; /* Green for accept */
+    background-color: rgb(108, 121, 122); /* Gray for accept */
     color: white;
     padding: 10px 15px;
     border: none;
@@ -394,5 +394,5 @@ body {
   }
   
   .remove-btn {
-    background-color: #f44336; /* Red for remove */
+    background-color: #e66e66; /* Red for remove */
   }
