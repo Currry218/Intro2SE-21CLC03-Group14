@@ -1,13 +1,5 @@
-.space {
-    padding: 30px;
-}
-
 .product-head {
-    text-align: center;
-}
-
-.product-head h1 {
-    padding-bottom: 10px;
+    padding-top: 32px ;
     font-weight: 550;
     text-align: center;
     color: white;
@@ -73,6 +65,8 @@ button {
 .explore{
     padding: 30px 0 40px;
 }
+
+/* .explore-content{margin-top: 40px;} */
 
 .single-explore-item {
     background: #fff;
