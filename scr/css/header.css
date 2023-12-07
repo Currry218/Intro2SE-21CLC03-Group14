@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background-color: rgba(29, 24, 24, 0.6);
+    background-color: rgb(155, 162, 167);
 }
 
 li {
@@ -21,7 +21,7 @@ li {
 }
 
 .header .navbar a:hover, .header .navbar li:hover {
-    color: #0e41c4;
+    color: #ffffff;
 }
 
 .header {
