@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background-color: rgb(155, 162, 167);
+    background-color: #fff;
 }
 
 li {
@@ -30,7 +30,7 @@ li {
     width: 100%;
     padding: 0 2rem;
     display: flex;
-    background-color: rgba(7, 28, 30, 0.5);
+    background-color: #343a40;
 }
 
 .navbar {
