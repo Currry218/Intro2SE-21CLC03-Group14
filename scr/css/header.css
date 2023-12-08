@@ -21,7 +21,7 @@ li {
 }
 
 .header .navbar a:hover, .header .navbar li:hover {
-    color: #ffffff;
+    color: rgb(31, 101, 199);
 }
 
 .header {
@@ -81,33 +81,3 @@ li {
 .menu li {
     padding-left: 30px
 }
-
-/* .sub-sub-menu {
-    padding: 20;
-    display: none;
-    left: 0;
-    top: 100%;
-} */
-
-
-/*responsive*/
-/* @media(max-width: 992px) {
-    .navbar .links{
-        display: none;
-    }
-
-    .navbar .toggle_btn {
-        display: block;
-    }
-
-    .dropdown-menu {
-        display: block;
-    }
-}
-
-@media (max-width: 576px) {
-    .dropdown-menu {
-        left: 2rem;
-        width:unset;
-    }
-} */
