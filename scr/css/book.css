@@ -2,6 +2,11 @@
     padding: 30px;
 }
 
+.note > a{
+    font-size: 0.9rem !important;
+    text-decoration-line: underline;
+}
+
 .product-head {
     text-align: center;
 }

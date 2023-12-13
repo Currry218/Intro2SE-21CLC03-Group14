@@ -3,5 +3,6 @@ const controller = require("../controllers/adminController");
 const router = express.Router();
 
 router.get("/", controller.show);
-// router.get("/qldiemdat", controller.qldiemdat);
+router.get("/homepage", controller.showHomepage);
+
 module.exports = router;
