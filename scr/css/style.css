@@ -384,6 +384,7 @@ body {
   
   .accept-btn,
   .remove-btn {
+    right: 0%;
     background-color: #424445; /* Gray for accept */
     color: white;
     padding: 10px 15px;
