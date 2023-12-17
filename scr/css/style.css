@@ -204,7 +204,7 @@ img{
         padding-top: 0;
     }
 }
-/*content*/
+content
 .container {
     padding: 2rem;
 }
@@ -340,10 +340,15 @@ img{
     background: url('/scr/img/blog/b2.jpg') no-repeat center center;
     background-size: cover;
   }
- 
+.box-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   #follow-button{
-    display: block;
-    margin: 20px auto;
+    /* margin: auto; */
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 10px 20px;
     background-color: #424445;
     color: white;
