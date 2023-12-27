@@ -26,6 +26,20 @@
     font-weight: 600;
 }
 
+#name {
+    width: 69%;
+    float: left;
+}
+#price {
+    width: 29%;
+    float: right;
+}
+
+.form-check-input {
+    margin-left: 15px;
+    margin-right: 0px;
+}
+
 #discription {
     padding: 40px;
 }

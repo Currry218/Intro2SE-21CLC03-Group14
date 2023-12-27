@@ -19,7 +19,9 @@
     background-color: #eae8e8;
 }
 
-
+.space {
+    padding-top: 30px;
+}
 
 @media (min-width: 992px) {
     .card-registration-2 .bg-grey {
