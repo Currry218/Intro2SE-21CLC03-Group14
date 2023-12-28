@@ -4,7 +4,7 @@ const port = 4000 || process.env.PORT;
 const expressHbs = require("express-handlebars");
 const paginate = require('express-handlebars-paginate');
 
-// app.use(express.static(__dirname +"/html"));
+app.use(express.static(__dirname +"/html"));
 app.engine(
     "hbs",
     expressHbs.engine({
