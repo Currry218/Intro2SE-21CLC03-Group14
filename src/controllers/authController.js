@@ -1,107 +1,114 @@
 const controller = {};
-const TaiKhoan = require("../models").TaiKhoan;
-const LoaiTaiKhoan = require("../models").LoaiTaiKhoan;
+const Account = require("../models").Account;
 
-controller.hienDangNhap = (req, res) => {
+controller.showLogin = (req, res) => {
+    let accounts = Account.findAll();
+    console.log(accounts);
     let reqUrl = req.query.reqUrl ? req.query.reqUrl : "/";
-    if (req.session.taikhoan) {
-        return res.redirect(reqUrl);
-    }
-    res.render("dangnhap", { 
-        layout: "layoutdan",
-		title: "Đăng nhập" , 
-		dangnhap: true,
+    // if (req.session.account) {
+    //     return res.redirect(reqUrl);
+    // }
+    res.render("login", { 
+        layout: "guestlayout",
+		title: "Login" , 
+		login: true,
     reqUrl,
     });
 };
 
-controller.dangNhap = async (req, res) => {
-    let { TenTaiKhoan, MatKhau } = req.body;
-    let taikhoan = await TaiKhoan.findOne({
-        attributes: [ "id", "TenTaiKhoan", "MatKhau", "LoaiTaiKhoanId",],
-        where: { TenTaiKhoan, MatKhau },
-        include: [{ model: LoaiTaiKhoan, attributes: ["HoTen"] }]
+controller.login = async (req, res) => {
+    let { email, password } = req.body;
+    let account = await Account.findOne({
+        attributes: [ "username", "password", "email", "balance", "isAdmin"],
+        where: { email, password },
+        // include: [{ model: LoaiTaiKhoan, attributes: ["HoTen"] }]
     });
-    if (taikhoan) {
+    if (account) {
         let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
 
-        if (taikhoan.LoaiTaiKhoanId && taikhoan.LoaiTaiKhoan.HoTen) {
-            reqUrl = `/${taikhoan.LoaiTaiKhoan.HoTen.toLowerCase()}`;
+        if (account.isAdmin == true) {
+            reqUrl = `/admin`;
         }
+        if (account.isAdmin == false) {
+            reqUrl = `${account.username.toLowerCase()}`;
+        }
+        // if (account.LoaiTaiKhoanId && account.LoaiTaiKhoan.HoTen) {
+        //     reqUrl = `/${account.LoaiTaiKhoan.HoTen.toLowerCase()}`;
+        // }
 
-        req.session.taikhoan = taikhoan;
+        req.session.account = account;
         return res.redirect(reqUrl);
     }
-    return res.render("dangnhap", {
-        layout: "layoutdan",
+    return res.render("login", {
+        layout: "guestlayout",
         message: "Sai tên tài khoản hoặc mật khẩu!",
     });
 };
 
-controller.daDangNhap = async (req, res, next) => {
-    if (req.session.taikhoan) {
-        res.locals.taikhoan = req.session.taikhoan;
-        return next();
-    }
-    res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
-};
+// controller.daDangNhap = async (req, res, next) => {
+//     if (req.session.taikhoan) {
+//         res.locals.taikhoan = req.session.taikhoan;
+//         return next();
+//     }
+//     res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
+// };
 
-controller.phuongDaDangNhap = async (req, res, next) => {
-    if (req.session.taikhoan) {
-        const taikhoan = req.session.taikhoan;
-        if (taikhoan.LoaiTaiKhoanId) {
-            const loaitaikhoan = await LoaiTaiKhoan.findOne({
-                where: { id: taikhoan.id, HoTen: "Phuong" },
-            });
+// controller.phuongDaDangNhap = async (req, res, next) => {
+//     if (req.session.taikhoan) {
+//         const taikhoan = req.session.taikhoan;
+//         if (taikhoan.LoaiTaiKhoanId) {
+//             const loaitaikhoan = await LoaiTaiKhoan.findOne({
+//                 where: { id: taikhoan.id, HoTen: "Phuong" },
+//             });
 
-            if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
-                res.locals.taikhoan = taikhoan;
-                return next();
-            }
-        }
-    }
-    res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
-};
+//             if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
+//                 res.locals.taikhoan = taikhoan;
+//                 return next();
+//             }
+//         }
+//     }
+//     res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
+// };
 
-controller.quanDaDangNhap = async (req, res, next) => {
-    if (req.session.taikhoan) {
-        const taikhoan = req.session.taikhoan;
-        if (taikhoan.LoaiTaiKhoanId) {
-            const loaitaikhoan = await LoaiTaiKhoan.findOne({
-                where: { id: taikhoan.id, HoTen: "Quan" },
-            });
+// controller.quanDaDangNhap = async (req, res, next) => {
+//     if (req.session.taikhoan) {
+//         const taikhoan = req.session.taikhoan;
+//         if (taikhoan.LoaiTaiKhoanId) {
+//             const loaitaikhoan = await LoaiTaiKhoan.findOne({
+//                 where: { id: taikhoan.id, HoTen: "Quan" },
+//             });
 
-            if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
-                res.locals.taikhoan = taikhoan;
-                return next();
-            }
-        }
-    }
-    res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
-};
+//             if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
+//                 res.locals.taikhoan = taikhoan;
+//                 return next();
+//             }
+//         }
+//     }
+//     res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
+// };
 
-controller.soDaDangNhap = async (req, res, next) => {
-    if (req.session.taikhoan) {
-        const taikhoan = req.session.taikhoan;
-        if (taikhoan.LoaiTaiKhoanId) {
-            const loaitaikhoan = await LoaiTaiKhoan.findOne({
-                where: { id: taikhoan.id, HoTen: "So" },
-            });
+// controller.soDaDangNhap = async (req, res, next) => {
+//     if (req.session.taikhoan) {
+//         const taikhoan = req.session.taikhoan;
+//         if (taikhoan.LoaiTaiKhoanId) {
+//             const loaitaikhoan = await LoaiTaiKhoan.findOne({
+//                 where: { id: taikhoan.id, HoTen: "So" },
+//             });
 
-            if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
-                res.locals.taikhoan = taikhoan;
-                return next();
-            }
-        }
-    }
-    res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
-};
+//             if (loaitaikhoan && taikhoan.LoaiTaiKhoanId === loaitaikhoan.id) {
+//                 res.locals.taikhoan = taikhoan;
+//                 return next();
+//             }
+//         }
+//     }
+//     res.redirect(`/dangnhap?reqUrl=${req.originalUrl}`)
+// };
 
-controller.dangXuat = async (req, res, next) => {
-    req.session.destroy(function(error) {
-        if (error) return next(error);
-        res.redirect("/dangnhap");
-    });
-};
+// controller.dangXuat = async (req, res, next) => {
+//     req.session.destroy(function(error) {
+//         if (error) return next(error);
+//         res.redirect("/dangnhap");
+//     });
+// };
 
 module.exports = controller;

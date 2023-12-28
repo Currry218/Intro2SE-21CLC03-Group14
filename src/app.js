@@ -30,8 +30,8 @@ app.engine(
 );
 app.set("view engine","hbs");
 
-app.use("/", require("./routes/guestRouter"));
-app.use("/:id", require("./routes/userRouter"));
-app.use("/admin", require("./routes/adminRouter"));
+app.use("/", require("./routes/authRouter"));
+// app.use("/:id", require("./routes/userRouter"));
+// app.use("/admin", require("./routes/adminRouter"));
 
 app.listen(port,() => console.log(`Example app listening on port ${port}`));

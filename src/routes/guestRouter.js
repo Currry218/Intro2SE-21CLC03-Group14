@@ -4,4 +4,7 @@ const router = express.Router();
 
 router.get("/", controller.show);
 
+
+// router.get("/product:id")
+
 module.exports = router;
