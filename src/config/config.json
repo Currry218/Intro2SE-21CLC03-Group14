@@ -1,0 +1,41 @@
+{
+  "development": {
+    "username": "bookee",
+    "password": "4tHRz52ZGl8ZtzKyBHKlCu85hC3rsiFa",
+    "database": "bookee",
+    "host": "dpg-cm6hup21hbls73a7o170-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions":{
+      "ssl": {
+        "require":true,
+        "rejectUnauthorized": false 
+      }
+    }
+  },
+  "test": {
+    "username": "bookee",
+    "password": "4tHRz52ZGl8ZtzKyBHKlCu85hC3rsiFa",
+    "database": "bookee",
+    "host": "dpg-cm6hup21hbls73a7o170-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions":{
+      "ssl": {
+        "require":true,
+        "rejectUnauthorized": false 
+      }
+    }
+  },
+  "production": {
+    "username": "bookee",
+    "password": "4tHRz52ZGl8ZtzKyBHKlCu85hC3rsiFa",
+    "database": "bookee",
+    "host": "dpg-cm6hup21hbls73a7o170-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "dialectOptions":{
+      "ssl": {
+        "require":true,
+        "rejectUnauthorized": false 
+      }
+    }
+  }
+}
