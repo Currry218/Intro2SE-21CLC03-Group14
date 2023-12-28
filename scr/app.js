@@ -11,7 +11,7 @@ app.engine(
         layoutsDir: __dirname + "/views/layouts",
         partialsDir:__dirname +"/views/partials",
         extname:"hbs",
-        // defaultLayout: "layoutdan",
+        defaultLayout: "guestlayout",
 		runtimeOptions: {       
 			allowProtoPropertiesByDefault: true,     
 		}, 
@@ -25,15 +25,13 @@ app.engine(
 					});       
 				},    
 			paginateHelper: paginate.createPagination, 
-
 			},   
 		}),
 );
 app.set("view engine","hbs");
 
-// app.get("/", (req, res) => res.redirect("/blogs"));
-// app.use("/blogs", require("./routes/blogRouter"));
-app.use("/", require("./routes/userRouter"));
+app.use("/", require("./routes/guestRouter"));
+app.use("/:id", require("./routes/userRouter"));
 app.use("/admin", require("./routes/adminRouter"));
 
 app.listen(port,() => console.log(`Example app listening on port ${port}`));
