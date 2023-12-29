@@ -1,0 +1,41 @@
+npm i --save sequelize sequelize-cli
+npm i -g sequelize-cli
+npm init -y
+pnpm i express express-handlebars express-handlebars-paginate pg pg-hstore sequelize
+sequelize init
+
+sequelize model:create --name User --attributes username:string,password:string,email:string,balance:decimal,imagePath:string,isAdmin:boolean,wishlist:array:string
+sequelize model:create --name Book --attributes bookId:string,title:string,owner:string,author:string,imagePath:string,price:decimal,tags:array:string,description:text,buyer:array:string
+sequelize model:create --name Review --attributes username:string,bookId:string,content:text
+sequelize model:create --name Report --attributes username:string,reportedId:string,isBook:boolean,content:text
+
+//sua db thi model:create --force
+
+A.hasOne(B, { /* options */ });
+A.belongsTo(B, { /* options */ });
+A.hasMany(B, { /* options */ });
+A.belongsToMany(B, { through: 'C', /* options */ });
+
+User.hasMany(models.Book);
+Book.belongsTo(models.User, {
+  foreignKey: {
+    name: 'owner'
+  }
+});
+Review.belongsTo(models.User, {
+  foreignKey: {
+    name: 'username'
+  }
+});
+Report.belongsTo(models.User, {
+  foreignKey: {
+    name: 'username'
+  }
+});
+
+sequelize seed:generate --name User
+sequelize seed:generate --name Book
+sequelize seed:generate --name Report
+sequelize seed:generate --name Review
+
+sequelize db:seed:all
