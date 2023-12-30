@@ -67,5 +67,7 @@ app.listen(app.get('port'), function() {
 
 //localhost:5000/sync
 
+sequelize db:migrate
+//muon sua thi sequelize db:migrate:undo
 
 sequelize db:seed:all

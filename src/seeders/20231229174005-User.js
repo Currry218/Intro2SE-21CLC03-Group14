@@ -23,8 +23,8 @@ module.exports = {
         boughtBooks: [0],
         createdAt: Sequelize.literal('NOW()'),
         updatedAt: Sequelize.literal('NOW()'),
-     }], 
-     [{
+     }, 
+     {
         username: 'admin',
         password: '1',
         email: 'admin@gmail.com',

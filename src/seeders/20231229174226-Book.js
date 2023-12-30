@@ -24,7 +24,7 @@ module.exports = {
       buyer:[''],
       createdAt: Sequelize.literal('NOW()'),
       updatedAt: Sequelize.literal('NOW()'),
-     }], [{
+     }, {
       title:'Two Pieces',
       owner:'KimDong',
       ownerId:1,
