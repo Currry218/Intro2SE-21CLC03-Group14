@@ -1,32 +1,40 @@
 npm i --save sequelize sequelize-cli
 npm i -g sequelize-cli
 npm init -y
-pnpm i express express-handlebars express-handlebars-paginate pg pg-hstore sequelize
+npm i express express-handlebars express-handlebars-paginate pg pg-hstore sequelize
 sequelize init
 
-sequelize model:create --name User --attributes username:string,password:string,email:string,balance:decimal,imagePath:string,isAdmin:boolean,wishlist:array:string
-sequelize model:create --name Book --attributes bookId:string,title:string,owner:string,author:string,imagePath:string,price:decimal,tags:array:string,description:text,buyer:array:string
-sequelize model:create --name Review --attributes username:string,bookId:string,content:text
-sequelize model:create --name Report --attributes username:string,reportedId:string,isBook:boolean,content:text
+sequelize model:create --name User --attributes username:string,password:string,email:string,balance:decimal,imagePath:string,isAdmin:boolean,wishlist:array:string,boughtBooks:array:integer
+sequelize model:create --name Book --attributes title:string,owner:string,ownerId:integer,author:string,imagePath:string,price:decimal,tags:array:string,description:text,buyer:array:string
+sequelize model:create --name Review --attributes username:string,bookId:integer,content:text
+sequelize model:create --name Report --attributes username:string,reportedId:integer,isBook:boolean,content:text
 
 //sua db thi model:create --force
+//Nho xoa file neu sua
 
 A.hasOne(B, { /* options */ });
 A.belongsTo(B, { /* options */ });
 A.hasMany(B, { /* options */ });
 A.belongsToMany(B, { through: 'C', /* options */ });
 
-User.hasMany(models.Book);
-Book.belongsTo(models.User, {
-  foreignKey: {
-    name: 'owner'
-  }
+//them vao o models/asscociate
+User.hasMany(models.Book, {
+  foreignKey: 'ownerId'
 });
+Book.belongsTo(models.User, {
+  foreignKey: 'username',
+  through: 'owner',
+});    
+
+
+Review.belongsTo(models.User);    
 Review.belongsTo(models.User, {
   foreignKey: {
     name: 'username'
   }
 });
+Report.belongsTo(models.User);    
+
 Report.belongsTo(models.User, {
   foreignKey: {
     name: 'username'
@@ -37,5 +45,27 @@ sequelize seed:generate --name User
 sequelize seed:generate --name Book
 sequelize seed:generate --name Report
 sequelize seed:generate --name Review
+
+//Chay cai index.js
+const express = require("express");
+const app = express();
+
+var models = require('./models');
+app.get('/sync', function(req, res) {
+    models.sequelize.sync().then(function(){
+        res.send('DB sync completed!!!');
+    });
+});
+// const port = 4000 || process.env.PORT;
+
+
+app.set('port', process.env.PORT | 5000);
+app.listen(app.get('port'), function() {
+    console. log('Server is listening on port ' + app.get('port'));
+});
+//
+
+//localhost:5000/sync
+
 
 sequelize db:seed:all

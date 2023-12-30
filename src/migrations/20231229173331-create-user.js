@@ -7,12 +7,15 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        unique: true, // Add unique constraint to id
       },
       username: {
-        type: Sequelize.STRING
-      },
-      password: {
+        allowNull: false,
+        primaryKey: true,
+        unique: true, // Add unique constraint to username
+        type: Sequelize.STRING,
+      },      password: {
         type: Sequelize.STRING
       },
       email: {
@@ -29,6 +32,9 @@ module.exports = {
       },
       wishlist: {
         type: Sequelize.ARRAY(Sequelize.STRING)
+      },
+      boughtBooks: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       createdAt: {
         allowNull: false,

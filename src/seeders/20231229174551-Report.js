@@ -12,19 +12,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Books', [{
-      bookId:'1',
-      title:'One Piece',
-      owner:'KimDong',
-      author:'Oda',
-      imagePath:'',
-      price:16,
-      tags: ['Comedy', 'Action', 'Fantasy'],
-      description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
-      buyer:[''],
+    await queryInterface.bulkInsert('Reports', [{
+      username: 'user',
+      reportedId:1,
+      isBook:false,
+      content:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
       createdAt: Sequelize.literal('NOW()'),
       updatedAt: Sequelize.literal('NOW()'),
-     }], {});
+    }], {});
+ 
   },
 
   async down (queryInterface, Sequelize) {
@@ -32,9 +28,8 @@ module.exports = {
      * Add commands to revert seed here.
      *
      * Example:
-     * await queryInterface.bulkDelete('People', null, {});
+     * 
      */
-    await queryInterface.bulkDelete('Books', null, {});  
-
+    await queryInterface.bulkDelete('Reports', null, {});  
   }
 };

@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Report.belongsTo(models.User);
+      Report.belongsTo(models.User);    
     }
   }
   Report.init({
     username: DataTypes.STRING,
-    reportedId: DataTypes.STRING,
+    reportedId: DataTypes.INTEGER,
     isBook: DataTypes.BOOLEAN,
     content: DataTypes.TEXT
   }, {
