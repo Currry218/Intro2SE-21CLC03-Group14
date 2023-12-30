@@ -11,9 +11,9 @@ router.get("/logout", controller.logout);
 // router.get("/dangxuat", controller.dangXuat);
 
 router.use("/", require("./guestRouter")); // controller.loggedIn
-// router.use("/:id", controller.userLoggedIn, require("./userRouter")); // req.params.id
-// router.use("/admin", controller.adminLoggedIn, require("./adminRouter"));
-router.use("/:id", require("./userRouter"));
-router.use("/admin", require("./adminRouter"));
+router.use("/admin", controller.adminLoggedIn, require("./adminRouter"));
+router.use("/:id", controller.userLoggedIn, require("./userRouter")); // req.params.id
+// router.use("/:id", require("./userRouter"));
+// router.use("/admin", require("./adminRouter"));
 
 module.exports = router;

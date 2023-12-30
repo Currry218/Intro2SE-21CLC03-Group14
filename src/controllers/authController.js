@@ -39,14 +39,14 @@ controller.login = async (req, res) => {
     });
 };
 
-controller.userLoggedIn = async (req, res, next) => {
+// controller.userLoggedIn = async (req, res, next) => {
 
-};
+// };
 
 controller.userLoggedIn = async (req, res, next) => {
     if (req.session.user) {
         const user = req.session.user;
-        if (user.isAdmin == "false") {
+        if (user.isAdmin == false) {
             res.locals.user = user;
             return next();
         }
@@ -55,11 +55,9 @@ controller.userLoggedIn = async (req, res, next) => {
 };
 
 controller.adminLoggedIn = async (req, res, next) => {
-    console.log("Middleware");
     if (req.session.user) {
         const user = req.session.user;
-        console.log(user.isAdmin);
-        if (user.isAdmin == "true") {
+        if (user.isAdmin == true) {
             res.locals.user = user;
             return next();
         }
@@ -70,7 +68,7 @@ controller.adminLoggedIn = async (req, res, next) => {
 controller.logout = async (req, res, next) => {
     req.session.destroy(function(error) {
         if (error) return next(error);
-        res.redirect("/");
+        res.redirect("/login");
     });
 };
 
