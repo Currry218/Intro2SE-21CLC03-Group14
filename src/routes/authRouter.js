@@ -6,32 +6,14 @@ const controller = require("../controllers/authController");
 
 router.get("/login", controller.showLogin);
 router.post("/login", controller.login);
+router.get("/logout", controller.logout);
 
 // router.get("/dangxuat", controller.dangXuat);
 
-router.use("/", require("./guestRouter"));
+router.use("/", require("./guestRouter")); // controller.loggedIn
+// router.use("/:id", controller.userLoggedIn, require("./userRouter")); // req.params.id
+// router.use("/admin", controller.adminLoggedIn, require("./adminRouter"));
+router.use("/:id", require("./userRouter"));
 router.use("/admin", require("./adminRouter"));
-// router.use("/:id", controller.phuongDaDangNhap, require("./userRouter"));
-// router.use("/admin", controller.quanDaDangNhap, require("./adminRouter"));
-
-
-// router.post("/login", async (req, res) => {
-//     // const recaptchaResponse = req.body['g-recaptcha-response'];
-//     // // Verify reCAPTCHA response
-//     // try {
-//     //     const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${YOUR_RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`;
-//     //     const recaptchaVerification = await axios.post(verificationURL);
-        
-//     //     if (recaptchaVerification.data.success) {
-//     //         await controller.dangNhap(req, res);
-//     //     } else {
-//     //         // Handle failed reCAPTCHA verification
-//     //         res.status(403).send('Failed reCAPTCHA verification.');
-//     //     }
-//     // } catch (error) {
-//     //     console.error('Error verifying reCAPTCHA:', error);
-//     //     res.status(500).send('Internal server error.');
-//     // }
-// });
 
 module.exports = router;

@@ -4,6 +4,8 @@ const port = 4000 || process.env.PORT;
 const expressHbs = require("express-handlebars");
 const paginate = require('express-handlebars-paginate');
 
+const session = require("express-session");
+
 app.use(express.static(__dirname +"/html"));
 app.engine(
     "hbs",
@@ -29,6 +31,22 @@ app.engine(
 		}),
 );
 app.set("view engine","hbs");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(
+	session({
+	  secret: "SESSION_SECRET",
+	  resave: false,
+	  saveUninitialized: false,
+	  cookie: {
+		secure: false,  // if true only transmit cookie over https
+		httpOnly: true, // prevent client side JS from reading the cookie
+		maxAge: 20 * 60 * 1000, // 20 minutes
+	  },
+	})
+);
 
 app.use("/", require("./routes/authRouter"));
 // app.use("/:id", require("./routes/userRouter"));
