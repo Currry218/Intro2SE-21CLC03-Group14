@@ -36,7 +36,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       buyer: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
+      isVerified: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Book, {
         foreignKey: 'ownerId'
       });
+      User.hasMany(models.Review, {
+        foreignKey: 'userId'
+      });
+      User.hasMany(models.Report, {
+        foreignKey: 'userId'
+      });
     }
   }
   User.init({
@@ -23,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     balance: DataTypes.DECIMAL,
     imagePath: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN,
-    wishlist: DataTypes.ARRAY(DataTypes.STRING),
+    wishlist: DataTypes.ARRAY(DataTypes.INTEGER),
     boughtBooks: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {
     sequelize,

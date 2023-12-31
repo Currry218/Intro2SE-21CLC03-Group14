@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       wishlist: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       boughtBooks: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)

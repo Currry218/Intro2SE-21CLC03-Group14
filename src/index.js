@@ -4,7 +4,7 @@ const app = express();
 var models = require('./models');
 app.get('/sync', function(req, res) {
     models.sequelize.sync().then(function(){
-        res.send('DB sunc completed!!!');
+        res.send('DB sync completed!!!');
     });
 });
 // const port = 4000 || process.env.PORT;

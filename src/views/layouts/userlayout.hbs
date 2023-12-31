@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="stylesheet" href="/css/book.css">
   <link rel="stylesheet" href="/css/header.css">
-  <title>{{{title}}}</title>
+  <title>{{#if title}}{{{title}}}{{else}}BOOKEE{{/if}}</title>
   <!-- For logo png -->
 	<link rel="shortcut icon" type="image/icon" href="/scr/img/logo/logo.png"/>
 </head>
@@ -17,22 +17,27 @@
   <div class="header">
     <div class="navbar">
       <div class="logo"><a href="/">BOOKEE</a></div>
-      <form>
+      
+      {{#if id}}
+        <form action="/{{{id}}}/search" method="POST"></form>      
+      {{else}}
+        <form action="/search" method="POST"></form>
+      {{/if}}
         <input type="text" name="search" placeholder="Searching books..." />
         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
       </form>
+
       <ul class ="menu d-flex me-0">
         {{#if id}}
           <li><a href="/{{{id}}}/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
           <li><a href="/{{{id}}}/profile"><i class="fa fa-user"></i> Profile</a></li>
           <li><a href="/{{{id}}}/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-          <li><a href="/logout"><i class="fa fa-sign-out-alt"></i> Log out</a></li>
         {{else}}
           <li><a href="/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
           <li><a href="/profile"><i class="fa fa-user"></i> Profile</a></li>
           <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-          <li><a href="/logout"><i class="fa fa-sign-out-alt"></i> Log out</a></li>        
         {{/if}}
+          <li><a href="/logout"><i class="fa fa-sign-out-alt"></i> Log out</a></li>        
       </ul>
     </div>
   </div>

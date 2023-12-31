@@ -12,8 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Book.belongsTo(models.User, {
-        foreignKey: 'id',
-        through: 'ownerId',
+        foreignKey: 'ownerId'
       });    
     }
   }
@@ -25,8 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     imagePath: DataTypes.STRING,
     price: DataTypes.DECIMAL,
     tags: DataTypes.ARRAY(DataTypes.STRING),
+    isVerified: DataTypes.BOOLEAN,
     description: DataTypes.TEXT,
-    buyer: DataTypes.ARRAY(DataTypes.STRING)
+    buyer: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {
     sequelize,
     modelName: 'Book',
