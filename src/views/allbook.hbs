@@ -8,28 +8,38 @@
       <div class="space"></div>
       <div class="product-head">
         <h1>All books</h1>
-        <div class="row">
-          <div class="col">
+        {{!-- {{#each books}}
+          {{#if isRowStart @index}}
+            <div class="row">
+          {{/if}}
+          <div class="col col-sm-6">
             <div class="single-explore-item">
               <div class="single-explore-img">
-                <a href = #!><img src="/img/explore/e3.jpg" alt="explore image"></a>
+                <a href ="///Nho sua/detail"><img src="{{imagePath}}" alt="/img/bookeeimg.png"></a>
               </div>
               <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">And then there were none</a></h2>
+                <h2><a href="///Nho sua/detail">{{title}}</a></h2>
                 <p class="explore-rating-price">
                   <span class="explore-price-box">
-                    price:
-                    <span class="explore-price">10$</span>
+                    Price:
+                    <span class="explore-price">{{price}} </span>
                   </span>
-                  <span class="explore-price-genne">
+                  {{!-- <span class="explore-price-genne">
                     novel
-                  </span>
-                  <a  href="#!">Agatha christie</a>
+                  </span> --}}
+                  <a  href="///Nho sua/author">{{author}}</a>
                   </span>
                 </p>
               </div>
             </div>
           </div>
+          {{#if isRowEnd @index}}
+            </div>
+          {{/if}}
+        {{/each}} --}}
+        
+        <div class="row">
+          
 
           <div class="col">
             <div class="single-explore-item">

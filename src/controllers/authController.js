@@ -2,6 +2,7 @@ const controller = {};
 const User = require("../models").User;
 
 controller.showLogin = (req, res) => {
+    console.log("showloginn" + req.query.reqUrl);
     let reqUrl = req.query.reqUrl ? req.query.reqUrl : "/";
     if (req.session.user) {
         return res.redirect(reqUrl);
@@ -22,6 +23,8 @@ controller.login = async (req, res) => {
     });
     
     if (user) {
+        console.log("login" + req.query.reqUrl);
+
         let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
 
         if (user.isAdmin == true) {
@@ -36,6 +39,7 @@ controller.login = async (req, res) => {
     return res.render("login", {
         layout: "guestlayout",
         message: "Wrong username or password!",
+        
     });
 };
 
@@ -44,6 +48,8 @@ controller.login = async (req, res) => {
 // };
 
 controller.userLoggedIn = async (req, res, next) => {
+    console.log("User logedin " + req.query.reqUrl);
+
     if (req.session.user) {
         const user = req.session.user;
         if (user.isAdmin == false) {

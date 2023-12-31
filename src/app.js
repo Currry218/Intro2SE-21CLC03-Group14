@@ -7,6 +7,15 @@ const paginate = require('express-handlebars-paginate');
 const session = require("express-session");
 
 app.use(express.static(__dirname +"/html"));
+
+expressHbs.create({ helpers: {
+	isRowStart: function(index) {
+	  return index % 5 === 0;
+	},
+	isRowEnd: function(index) {
+	  return (index + 1) % 5 === 0 || index === books.length - 1;
+	}
+  }});
 app.engine(
     "hbs",
     expressHbs.engine({
@@ -49,7 +58,7 @@ app.use(
 );
 
 app.use("/", require("./routes/authRouter"));
-// app.use("/:id", require("./routes/userRouter"));
+// app.use("/", require("./routes/userRouter"));
 // app.use("/admin", require("./routes/adminRouter"));
 
 app.listen(port,() => console.log(`Example app listening on port ${port}`));
