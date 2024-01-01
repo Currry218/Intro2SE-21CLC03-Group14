@@ -7,24 +7,23 @@
       
       <div class="space"></div>
       <div class="product-head">
-        <h1>All books</h1>
-        
+        <h1>Wishlist</h1>
         <div class="row">
-          {{#each allbooks}}
+          {{#each wishlistbooks}}
           <div class="col">
             <div class="single-explore-item">
               <div class="single-explore-img">
-                <a href = "productpage.html"><img src={{imagePath}} alt="explore image"></a>
+                <a href = #!><img src={{imagePath}} alt="explore image"></a>
               </div>
               <div class="single-explore-txt bg-theme-5">
-                <h2><a href="productpage.html">{{title}}</a></h2>
+                <h2><a href="#!">{{title}}</a><button type="button" class="btn"><i class="fa fa-heart-broken"></i></button></h2>
                 <p class="explore-rating-price">
                   <span class="explore-price-box">
                     price:
-                    <span class="explore-price">{{price}}</span>
+                    <span class="explore-price">{{price}}$</span>
                   </span>
                   <span class="explore-price-genne">
-                    novel {{!-- thiếu genre --}}
+                    novel
                   </span>
                   <a  href="#!">{{author}}</a>
                   </span>
@@ -33,8 +32,9 @@
             </div>
           </div>
           {{/each}}
+        </div>
       </div>
+    
     </div>
   </div>
-</section><!--/.explore-->
-<!--explore end -->
+</section>

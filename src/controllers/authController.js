@@ -65,11 +65,27 @@ controller.signup = async (req, res) => {
     }
 }
 
+controller.loggedIn = async (req, res, next) => {
+    if (req.session.user) {
+        const user = req.session.user;
+        if (user.isAdmin == true) {
+            res.locals.user = user;
+            return res.redirect("/admin");
+        } else {
+            res.locals.user = user;
+            res.locals.id = req.params.id;
+            return res.redirect(`/${user.id}`);
+        }
+    }
+    return next();
+};
+
 controller.userLoggedIn = async (req, res, next) => {
     if (req.session.user) {
         const user = req.session.user;
-        if (user.isAdmin == false) {
+        if (user.isAdmin == false && user.id == req.params.id) {
             res.locals.user = user;
+            res.locals.id = req.params.id;
             return next();
         }
     }

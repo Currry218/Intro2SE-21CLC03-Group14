@@ -26,7 +26,10 @@ app.engine(
 		runtimeOptions: {       
 			allowProtoPropertiesByDefault: true,     
 		}, 
-		helpers: {       
+		helpers: {   
+			toFixed: function (value, decimals) {
+				return parseFloat(value).toFixed(decimals);
+			},    
 			showDate: (date) => {          
 				return date.toLocaleDateString(
 					'en-US', {           
@@ -34,7 +37,7 @@ app.engine(
 						month: 'long',           
 						day: 'numeric',         
 					});       
-				},    
+			},    
 			paginateHelper: paginate.createPagination, 
 			},   
 		}),

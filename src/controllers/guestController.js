@@ -51,7 +51,25 @@ controller.show = async (req, res) => {
 		limit: 5
 	});
 
-	res.render('guest_hp', { title: "Trang chủ" , layout: "guestlayout", trangchu: true, newbooks, trendingbooks, allbooks});
+	res.render('guest_hp', { title: "Homepage" , layout: "guestlayout", homepage: true, newbooks, trendingbooks, allbooks});
+}
+
+controller.showAll = async (req, res) => {
+	const allbooks = await models.Book.findAll({
+		attributes: [
+		  "id",
+		  "title",
+		  "author",
+		  "imagePath",
+		  "price",
+		  "tags",
+		],
+		where: {
+			isVerified: true
+		},
+		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
+	});
+	res.render('allbook', { title: "All", layout: "guestlayout", showAll: true, allbooks});
 }
 
 module.exports = controller;

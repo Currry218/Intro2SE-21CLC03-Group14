@@ -10,9 +10,9 @@ router.get("/logout", controller.logout);
 router.get("/signup", controller.showSignup);
 router.post("/signup", controller.signup);
 
-router.use("/", require("./guestRouter")); // controller.loggedIn
 router.use("/admin", controller.adminLoggedIn, require("./adminRouter"));
 router.use("/:id", controller.userLoggedIn, require("./userRouter")); // req.params.id
+router.use("/", controller.loggedIn, require("./guestRouter")); // controller.loggedIn
 // router.use("/:id", require("./userRouter"));
 // router.use("/admin", require("./adminRouter"));
 

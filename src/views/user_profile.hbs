@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/book.css">
+
+<!-- Content -->
+<div class="container">
+  <div class="information">
+    <div class="d-flex">
+      {{#with userInfo}}
+      <div class="ms-4 mt-5 d-flex flex-column">
+        <img src={{imagePath}}
+          alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+          style="width: 150px; z-index: 1">
+      </div>
+      <div class="name">
+        <h5>{{username}}</h5>
+        <p>Unknown</p>
+      </div>
+      {{/with}}
+    </div>
+
+    <div class="d-flex justify-content-end text-center py-1 e3">
+      <div>
+        <p class="mb-1 h5">35</p>
+        <p class="small text-muted">Books</p>
+      </div>
+      <div class="px-3">
+        <p class="mb-1 h5">1026</p>
+        <p class="small text-muted">Followers</p>
+      </div>
+      <div>
+        <p class="mb-1 h5">478</p>
+        <p class="small text-muted">Following</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-head">
+    <h1>Purchased books</h1>
+    <div class="row">
+      {{#each boughtbooks}}
+      <div class="col">
+        <div class="single-explore-item">
+          <div class="single-explore-img">
+            <a href = "productpage.html"><img src={{imagePath}} alt="explore image"></a>
+          </div>
+          <div class="single-explore-txt bg-theme-5">
+            <h2><a href="productpage.html">{{title}}</a></h2>
+            <p class="explore-rating-price">
+              <span class="explore-price-box">
+                price:
+                <span class="explore-price">{{price}}</span>
+              </span>
+              <span class="explore-price-genne">
+                novel {{!-- thiếu genre --}}
+              </span>
+              <a  href="#!">{{author}}</a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="note d-flex justify-content-end"><a href="allbook_logined.html">More >> </a></div>
+  </div>
+  
+
+  <div class="product-head">
+    <h1>Selling books</h1>
+    <div class="row">
+      {{#each sellingbooks}}
+      <div class="col">
+        <div class="single-explore-item">
+          <div class="single-explore-img">
+            <a href = "productpage.html"><img src={{imagePath}} alt="explore image"></a>
+          </div>
+          <div class="single-explore-txt bg-theme-5">
+            <h2><a href="productpage.html">{{title}}</a></h2>
+            <p class="explore-rating-price">
+              <span class="explore-price-box">
+                price:
+                <span class="explore-price">{{price}}</span>
+              </span>
+              <span class="explore-price-genne">
+                novel {{!-- thiếu genre --}}
+              </span>
+              <a  href="#!">{{author}}</a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
+    <a class="btn btn-primary" href="register.html" role="button">Register books</a>
+    <div class="note d-flex justify-content-end"><a href="allbook_logined.html">More >> </a></div>
+  </div>
+
+</div>

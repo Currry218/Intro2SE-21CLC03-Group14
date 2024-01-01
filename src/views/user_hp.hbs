@@ -1,14 +1,12 @@
-{{!-- <link rel="stylesheet" href="/css/book.css">
-<link rel="stylesheet" href="/css/header.css"> --}}
-
-<section class="explore">
-  <div class="container">
-    <div class="explore-content">
-      
-      <div class="space"></div>
-      <div class="product-head">
-        <h1>New books</h1>
-        <div class="row">
+  <!--Content-->
+  <section class="explore">
+    <div class="container">
+      <div class="explore-content">
+        
+        <div class="space"></div>
+        <div class="product-head">
+          <h1>New books</h1>
+          <div class="row">
           {{#each newbooks}}
           <div class="col">
             <div class="single-explore-item">
@@ -32,12 +30,12 @@
             </div>
           </div>
           {{/each}}
+          </div>
         </div>
-      </div>
-      
-      <div class="product-head">
-        <h1>Trending books</h1>
-        <div class="row">
+        
+        <div class="product-head">
+          <h1>Trending books</h1>
+          <div class="row">
           {{#each trendingbooks}}
           <div class="col">
             <div class="single-explore-item">
@@ -61,12 +59,12 @@
             </div>
           </div>
           {{/each}}
+          </div>
         </div>
-      </div>
 
-      <div class="product-head">
-        <h1>All books</h1>
-        <div class="row">
+        <div class="product-head">
+          <h1>All books</h1>
+          <div class="row">
           {{#each allbooks}}
           <div class="col">
             <div class="single-explore-item">
@@ -90,9 +88,9 @@
             </div>
           </div>
           {{/each}}
-        </div>
-      <div class="note d-flex justify-content-end"><a href="/all">More >> </a></div>
+          </div>
+        <div class="note d-flex justify-content-end"><a href="/{{{id}}}/all">More >> </a></div>
+      </div>
     </div>
-  </div>
-</section><!--/.explore-->
-<!--explore end -->
+  </section><!--/.explore-->
+  <!--explore end -->
