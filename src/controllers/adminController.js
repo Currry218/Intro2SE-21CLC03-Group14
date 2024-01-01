@@ -92,57 +92,64 @@ controller.showWaitlist = async (req, res) => {
 }
 
 controller.showReportBook = async (req, res) => {
-	const reportlists = await Report.findByPk(id, {
-		include: [
-		  { model: User, as: 'reportedUser' },
-		  { model: Book, as: 'reportedBook' }
-		]
-	  });
-	// const reportlists = await models.Report.findAll({
-	// 	attributes: [
-	// 	  "id",
-	// 	  "userId",
-	// 	  "reportedBookId",
-	// 	  "content",
-	// 	],
-	// 	where: {
-	// 		isBook: true
-	// 	},
+	// const reportlists = await Report.findByPk(id, {
 	// 	include: [
-	// 		{
-	// 			model: models.User,
-	// 			attributes: ["username"]
-	// 		},
-	// 		{
-	// 			model: models.Book,
-	// 			attributes: ["id", "title", "author", "imagePath", "price"]
-	// 		}
+	// 	  { model: User, as: 'reportedUser' },
+	// 	  { model: Book, as: 'reportedBook' }
 	// 	]
-	// });
+	//   });
+	const reportlists = await models.Report.findAll({
+		attributes: [
+		  "id",
+		  "userId",
+		  "reportedBookId",
+		  "content",
+		],
+		where: {
+			isBook: true
+		},
+		include: [
+			{
+				model: models.User,
+				// as: 'ReportedUser',
+				attributes: ["username"]
+			},
+			{
+				model: models.Book,
+				attributes: ["id", "title", "author", "imagePath", "price"]
+			}
+		]
+	});
 	console.log(reportlists);
 	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, reportlists});
 }
 
 controller.showReportAcc = async (req, res) => {
-	const rpAccInfo = await models.Report.findAll({
+	const reportlists = await models.Report.findAll({
 		attributes: [
 		  "id",
 		  "userId",
-		  "reportedId",
+		  "reportedUserId",
 		  "content",
 		],
 		where: {
 			isBook: false
 		},
 		include: [
-			{ 
+			{
 				model: models.User,
+				as: 'ReportedUser',
+				attributes: ["username", "imagePath"]
+			},
+			{
+				model: models.User,
+				// as: 'ReportedUser',
 				attributes: ["username"]
 			}
 		]
 	});
-
-	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, rpAccInfo});
+	console.log(reportlists);
+	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, reportlists});
 }
 
 controller.addUser = async (req, res) => {

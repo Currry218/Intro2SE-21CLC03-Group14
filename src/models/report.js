@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });    
       Report.belongsTo(models.User, {
         foreignKey: 'reportedUserId',
+        as: 'ReportedUser'
       });    
       Report.belongsTo(models.Book, {
         foreignKey: 'reportedBookId',

@@ -10,7 +10,7 @@
       <div class="product-head">
         <h1>Reported account</h1>
         <div class="row">
-          {{#each rpAccInfo}}
+          {{#each reportlists}}
           <div class=" col">
             <div class="single-explore-item">
                   <div class="post-person">
@@ -18,15 +18,15 @@
                       <div class="col-sm-2">
                         <div class="post-person-img">
                           <a href="#">
-                            <img src={{User.imagePath}} alt="post person">
+                            <img src={{ReportedUser.imagePath}} alt="post person">
                           </a>
                         </div>
                       </div>
                       <div class="col-sm-10">
                         <p>
-                          username: {{User.username}}.
+                          username: {{ReportedUser.username}}.
                           Reasons: {{content}}.
-                          Reported by User with ID: {{reportedId}}.
+                          Reported by User: {{User.username}}.
                         </p>
                         <div class="action-buttons">
                           <button class="accept-btn">Ban</button>
