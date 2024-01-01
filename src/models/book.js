@@ -21,7 +21,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         sourceKey: 'reviews',
         constraints: false,
-      });    }
+      });    
+      Book.hasMany(models.Report, {
+        foreignKey: {
+          name: 'reportedBookId',
+          allowNull: true,
+        }
+      });    
+    }
   }
   Book.init({
     title: DataTypes.STRING,

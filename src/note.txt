@@ -18,7 +18,6 @@ A.hasMany(B, { /* options */ });
 A.belongsToMany(B, { through: 'C', /* options */ });
 
 
-});
 
 sequelize seed:generate --name User
 sequelize seed:generate --name Book

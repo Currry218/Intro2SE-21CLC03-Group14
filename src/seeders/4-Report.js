@@ -14,8 +14,8 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Reports', [{
       userId: 2,
-      username: 'user',
-      reportedId:1,
+      reportedBookId: null,
+      reportedUserId: 1,
       isBook:false,
       content:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
       createdAt: Sequelize.literal('NOW()'),
@@ -23,8 +23,8 @@ module.exports = {
     },
     {
       userId: 2,
-      username: 'user',
-      reportedId:7,
+      reportedBookId: null,
+      reportedUserId: 7,
       isBook:false,
       content:'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
       createdAt: Sequelize.literal('NOW()'),
@@ -32,8 +32,8 @@ module.exports = {
     },
     {
       userId: 3,
-      username: 'premiumUser',
-      reportedId: 2,
+      reportedBookId: 2,
+      reportedUserId: null,
       isBook: true,
       content: 'I found some inappropriate content in this book. Please review.',
       createdAt: Sequelize.literal('NOW()'),
@@ -41,8 +41,8 @@ module.exports = {
     },
     {
       userId: 4,
-      username: 'bookLover',
-      reportedId: 3,
+      reportedBookId: null,
+      reportedUserId: 3,
       isBook: false,
       content: 'I encountered a user with inappropriate behavior. Please take action.',
       createdAt: Sequelize.literal('NOW()'),
@@ -50,8 +50,8 @@ module.exports = {
     },
     {
       userId: 5,
-      username: 'avidReader',
-      reportedId: 4,
+      reportedBookId: 4,
+      reportedUserId: null,
       isBook: true,
       content: 'This book seems to have a spoiler in the reviews. Please address.',
       createdAt: Sequelize.literal('NOW()'),
@@ -60,8 +60,8 @@ module.exports = {
     {
 
       userId: 6,
-      username: 'fantasyLover',
-      reportedId: 5,
+      reportedBookId: null,
+      reportedUserId: 5,
       isBook: false,
       content: 'The reported user is spamming unrelated content. Please investigate.',
       createdAt: Sequelize.literal('NOW()'),
@@ -69,8 +69,8 @@ module.exports = {
     },
     {
       userId: 7,
-      username: 'budgetReader',
-      reportedId: 6,
+      reportedBookId: 6,
+      reportedUserId: null,
       isBook: true,
       content: 'This book review seems to contain offensive language. Please take a look.',
       createdAt: Sequelize.literal('NOW()'),

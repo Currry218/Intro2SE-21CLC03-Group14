@@ -14,12 +14,18 @@ module.exports = (sequelize, DataTypes) => {
       Report.belongsTo(models.User, {
         foreignKey: 'userId',
       });    
+      Report.belongsTo(models.User, {
+        foreignKey: 'reportedUserId',
+      });    
+      Report.belongsTo(models.Book, {
+        foreignKey: 'reportedBookId',
+      });    
     }
   }
   Report.init({
     userId:DataTypes.INTEGER,
-    username: DataTypes.STRING,
-    reportedId: DataTypes.INTEGER,
+    reportedBookId: DataTypes.INTEGER,
+    reportedUserId: DataTypes.INTEGER,
     isBook: DataTypes.BOOLEAN,
     content: DataTypes.TEXT
   }, {

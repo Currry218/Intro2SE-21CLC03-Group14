@@ -42,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId'
       });
       User.hasMany(models.Report, {
+        foreignKey: 'reportedUserId'
+      });
+      User.hasMany(models.Report, {
         foreignKey: 'userId'
       });
     }

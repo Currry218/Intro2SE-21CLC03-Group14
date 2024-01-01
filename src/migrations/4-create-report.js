@@ -14,12 +14,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Users', key:'id'},
       },
-      username: {
-        type: Sequelize.STRING,
-        references: { model: 'Users', key:'username'},
+      reportedUserId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: { model: 'Users', key:'id'},
       },
-      reportedId: {
-        type: Sequelize.INTEGER
+      reportedBookId: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: { model: 'Books', key:'id'},
       },
       isBook: {
         type: Sequelize.BOOLEAN
