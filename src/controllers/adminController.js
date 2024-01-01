@@ -1,16 +1,47 @@
 const controller = {};
+const models = require("../models");
 
 controller.show = (req, res) => {
 	res.render('admin_hp', { title: "Homepage" , layout: "adminlayout", trangchu: true});
-	// res.render()
 }
 
-controller.showReportAcc = (req, res) => {
-	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true});
+controller.showReportAcc = async (req, res) => {
+	const rpAccInfo = await models.Report.findAll({
+		attributes: [
+		  "id",
+		  "userId",
+		  "username",
+		  "reportedId",
+		  "content",
+		],
+		where: {
+			isBook: false
+		},
+		include: [
+			{ model: models.User }
+		]
+	});
+
+	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, rpAccInfo});
 }
 
-controller.showReportBook = (req, res) => {
-	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true});
+controller.showReportBook = async (req, res) => {
+	const rpBookInfo = await models.Report.findAll({
+		attributes: [
+		  "id",
+		  "userId",
+		  "username",
+		  "reportedId",
+		  "content",
+		],
+		where: {
+			isBook: true
+		},
+		include: [
+			{ model: models.Book }
+		]
+	});
+	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, rpBookInfo});
 }
 
 controller.showWaitlist = (req, res) => {

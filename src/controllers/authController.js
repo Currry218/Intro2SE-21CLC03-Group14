@@ -10,7 +10,7 @@ controller.showLogin = (req, res) => {
         layout: "guestlayout",
 		title: "Login" , 
 		login: true,
-    reqUrl,
+        reqUrl,
     });
 };
 
@@ -24,9 +24,9 @@ controller.login = async (req, res) => {
     if (user) {
         let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
 
-        if (user.isAdmin == true) {
+        if (reqUrl=="/" && user.isAdmin == true) {
             reqUrl = "/admin";
-        } else {
+        } else if (reqUrl=="/" && user.isAdmin == false) {
             reqUrl = `/${user.id}`;
         }
 
@@ -36,13 +36,34 @@ controller.login = async (req, res) => {
     return res.render("login", {
         layout: "guestlayout",
         message: "Wrong username or password!",
-        
+        reqUrl,
     });
 };
 
-// controller.userLoggedIn = async (req, res, next) => {
+controller.showSignup = (req, res) => {
+    res.render("signup", {
+        layout: "guestlayout",
+    });
+}
 
-// };
+controller.signup = async (req, res) => {
+    let { fname, lname, email, password, isAdmin} = req.body;
+    isAdmin = isAdmin === 'on';
+    console.log(isAdmin);
+    try {
+        await User.create({ username: fname, password, email, isAdmin});
+        return res.render("login", {
+        layout: "guestlayout",
+        message: "You can now login using your registration!",
+      });
+    } catch (error) {
+      console.error(error);
+      return res.render("signup", {
+        layout: "guestlayout",
+        message: "Can not register new account!",
+      });
+    }
+}
 
 controller.userLoggedIn = async (req, res, next) => {
     if (req.session.user) {

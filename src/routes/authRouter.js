@@ -7,8 +7,8 @@ const controller = require("../controllers/authController");
 router.get("/login", controller.showLogin);
 router.post("/login", controller.login);
 router.get("/logout", controller.logout);
-
-// router.get("/dangxuat", controller.dangXuat);
+router.get("/signup", controller.showSignup);
+router.post("/signup", controller.signup);
 
 router.use("/", require("./guestRouter")); // controller.loggedIn
 router.use("/admin", controller.adminLoggedIn, require("./adminRouter"));
