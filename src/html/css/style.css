@@ -11,7 +11,7 @@ body {
 }
 
 .card-wrapper{
-    margin-top: 150px;
+    margin-top: 100px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -188,7 +188,7 @@ body {
         grid-gap: 1.5rem;
     }
     .card-wrapper{
-        height: 100vh;
+        /* height: 100vh; */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -212,7 +212,7 @@ content
 }
 
 .product-head {
-    margin-top: 40px;
+    /* margin-top: 10px; */
     font-weight: 500;
     text-align: center;
     color: white;

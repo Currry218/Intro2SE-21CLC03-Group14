@@ -8,14 +8,7 @@ const session = require("express-session");
 
 app.use(express.static(__dirname +"/html"));
 
-expressHbs.create({ helpers: {
-	isRowStart: function(index) {
-	  return index % 5 === 0;
-	},
-	isRowEnd: function(index) {
-	  return (index + 1) % 5 === 0 || index === books.length - 1;
-	}
-  }});
+
 app.engine(
     "hbs",
     expressHbs.engine({

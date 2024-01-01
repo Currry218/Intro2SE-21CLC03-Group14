@@ -9,6 +9,7 @@
   }
 
   .comment-box, .comment-list{
+    margin: 2rem;
     margin-block: 10px;
     background: #fffdfd;
     border-radius: 10px;
@@ -22,7 +23,7 @@
   .comment-list .user{
     margin-right: auto;
     display: flex;
-    padding: 8x;
+    padding: 10px 0px 0px 10px;
     overflow: hidden;
   }
   .comment-list .user img{
@@ -32,7 +33,8 @@
     margin-right: 10px;
   }
   .comment-list .name{
-    text-transform: uppercase;
+    padding-top: 7px;
+    /* text-transform: uppercase; */
     font-weight: 600;
   }
   .comment-list .day{
@@ -41,6 +43,11 @@
   .comment-box{
     padding: 10px;
     overflow: hidden;
+  }
+  .comment-box .user .name{
+    padding-top: 7px;
+    font-weight: 600;
+
   }
   .comment-box .user{
     display: flex;
@@ -53,10 +60,11 @@
     border-radius: 50%;
   }
   .comment-box textarea{
-    background: #eee;
-    width: 1100px;
+    background: #faf3f3a3;
+    width: 99%;
     height: 152px;
-    margin: 10px 0;
+    margin: 0px 8px 6px 8px;
+    resize: none;
     padding: 10px;
     border: none;
     border-radius: 4px;
