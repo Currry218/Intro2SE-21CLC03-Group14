@@ -17,28 +17,7 @@ A.belongsTo(B, { /* options */ });
 A.hasMany(B, { /* options */ });
 A.belongsToMany(B, { through: 'C', /* options */ });
 
-//them vao o models/asscociate
-User.hasMany(models.Book, {
-  foreignKey: 'ownerId'
-});
-Book.belongsTo(models.User, {
-  foreignKey: 'username',
-  through: 'owner',
-});    
 
-
-Review.belongsTo(models.User);    
-Review.belongsTo(models.User, {
-  foreignKey: {
-    name: 'username'
-  }
-});
-Report.belongsTo(models.User);    
-
-Report.belongsTo(models.User, {
-  foreignKey: {
-    name: 'username'
-  }
 });
 
 sequelize seed:generate --name User
@@ -47,23 +26,7 @@ sequelize seed:generate --name Report
 sequelize seed:generate --name Review
 
 //Chay cai index.js
-const express = require("express");
-const app = express();
 
-var models = require('./models');
-app.get('/sync', function(req, res) {
-    models.sequelize.sync().then(function(){
-        res.send('DB sync completed!!!');
-    });
-});
-// const port = 4000 || process.env.PORT;
-
-
-app.set('port', process.env.PORT | 5000);
-app.listen(app.get('port'), function() {
-    console. log('Server is listening on port ' + app.get('port'));
-});
-//
 
 //localhost:5000/sync
 

@@ -19,7 +19,8 @@ module.exports = {
         references: { model: 'Users', key:'username'},
       },
       bookId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Book', key:'id'},
       },
       content: {
         type: Sequelize.TEXT

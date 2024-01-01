@@ -14,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       Book.belongsTo(models.User, {
         foreignKey: 'ownerId'
       });    
-    }
+      Book.hasMany(models.Review, {
+        foreignKey: {
+          name: 'bookId',
+          allowNull: true,
+        },
+        sourceKey: 'reviews',
+        constraints: false,
+      });    }
   }
   Book.init({
     title: DataTypes.STRING,
@@ -26,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
     tags: DataTypes.ARRAY(DataTypes.STRING),
     isVerified: DataTypes.BOOLEAN,
     description: DataTypes.TEXT,
-    buyer: DataTypes.ARRAY(DataTypes.INTEGER)
+    buyer: DataTypes.ARRAY(DataTypes.INTEGER),
+    reviews: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {
     sequelize,
     modelName: 'Book',

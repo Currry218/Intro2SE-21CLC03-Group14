@@ -41,6 +41,9 @@ module.exports = {
       isVerified: {
         type: Sequelize.BOOLEAN
       },
+      reviews: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

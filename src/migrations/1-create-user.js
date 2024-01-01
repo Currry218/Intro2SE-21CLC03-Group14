@@ -33,6 +33,9 @@ module.exports = {
       wishlist: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
+      cart: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
+      },
       boughtBooks: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
       },

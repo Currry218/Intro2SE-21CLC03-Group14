@@ -14,6 +14,30 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Book, {
         foreignKey: 'ownerId'
       });
+      User.hasMany(models.Book, {
+        foreignKey: {
+          name: 'id',
+          allowNull: true,
+        },
+        sourceKey: 'wishlist',
+        constraints: false,
+      });    
+      User.hasMany(models.Book, {
+        foreignKey: {
+          name: 'id',
+          allowNull: true,
+        },
+        sourceKey: 'cart',
+        constraints: false,
+      });    
+      User.hasMany(models.Book, {
+        foreignKey: {
+          name: 'id',
+          allowNull: true,
+        },
+        sourceKey: 'boughtBooks',
+        constraints: false,
+      });    
       User.hasMany(models.Review, {
         foreignKey: 'userId'
       });
@@ -30,6 +54,7 @@ module.exports = (sequelize, DataTypes) => {
     imagePath: DataTypes.STRING,
     isAdmin: DataTypes.BOOLEAN,
     wishlist: DataTypes.ARRAY(DataTypes.INTEGER),
+    cart: DataTypes.ARRAY(DataTypes.INTEGER),
     boughtBooks: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {
     sequelize,
