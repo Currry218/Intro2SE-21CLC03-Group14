@@ -9,22 +9,23 @@
       <div class="product-head">
         <h1>New post</h1>
         <div class="row">
+          {{#each waitingbooks}}
           <div class="col">
             <div class="single-explore-item">
               <div class="single-explore-img">
-                <a href = #!><img src="/img/book2.jpg" alt="explore image"></a>
+                <a href = #!><img src={{imagePath}} alt="explore image"></a>
               </div>
               <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">Bungou stray dogs: BEAST</a></h2>
+                <h2><a href="#!">{{title}}</a></h2>
                 <p class="explore-rating-price">
-                  <a href="shop.html"> Shop Name</a>   <!-- shop name -->
+                  <a href="shop.html">{{owner}}</a>   <!-- shop name -->
                   <span class="explore-price-box">
                     price:
-                    <span class="explore-price">10$</span>
+                    <span class="explore-price">${{price}}</span>
                   </span>
-                  <a  href="#!">asagiri kafka</a>
+                  <a  href="#!">{{author}}</a>
                 </p>
-                <p>Bungou Stray Dogs is a Japanese comic series written by Kafka Asagiri and by Sango Harukawa illustrated, published in Young Ace magazine since 2012.</p>
+                <p>{{description}}</p>
               </div>
               <div class="action-buttons">
                 <button class="accept-btn">Accept</button>
@@ -32,101 +33,10 @@
             </div>
             </div>
           </div>
-          <div class="col">
-            <div class="single-explore-item">
-              <div class="single-explore-img">
-                <a href = #!><img src="/img/book2.jpg" alt="explore image"></a>
-              </div>
-              <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">Bungou stray dogs: BEAST</a></h2>
-                <p class="explore-rating-price">
-                  <a href="shop.html"> Shop Name</a>   <!-- shop name -->
-                  <span class="explore-price-box">
-                    price:
-                    <span class="explore-price">10$</span>
-                  </span>
-                  <a  href="#!">asagiri kafka</a>
-                </p>
-                <p>Bungou Stray Dogs is a Japanese comic series written by Kafka Asagiri and by Sango Harukawa illustrated, published in Young Ace magazine since 2012.</p>
-              </div>
-              <div class="action-buttons">
-                <button class="accept-btn">Accept</button>
-                <button class="remove-btn">Remove</button>
-            </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="single-explore-item">
-              <div class="single-explore-img">
-                <a href = #!><img src="/img/book2.jpg" alt="explore image"></a>
-              </div>
-              <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">Bungou stray dogs: BEAST</a></h2>
-                <p class="explore-rating-price">
-                  <a href="shop.html"> Shop Name</a>   <!-- shop name -->
-                  <span class="explore-price-box">
-                    price:
-                    <span class="explore-price">10$</span>
-                  </span>
-                  <a  href="#!">asagiri kafka</a>
-                </p>
-                <p>Bungou Stray Dogs is a Japanese comic series written by Kafka Asagiri and by Sango Harukawa illustrated, published in Young Ace magazine since 2012.</p>
-              </div>
-              <div class="action-buttons">
-                <button class="accept-btn">Accept</button>
-                <button class="remove-btn">Remove</button>
-            </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="single-explore-item">
-              <div class="single-explore-img">
-                <a href = #!><img src="/img/book2.jpg" alt="explore image"></a>
-              </div>
-              <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">Bungou stray dogs: BEAST</a></h2>
-                <p class="explore-rating-price">
-                  <a href="shop.html"> Shop Name</a>   <!-- shop name -->
-                  <span class="explore-price-box">
-                    price:
-                    <span class="explore-price">10$</span>
-                  </span>
-                  <a  href="#!">asagiri kafka</a>
-                </p>
-                <p>Bungou Stray Dogs is a Japanese comic series written by Kafka Asagiri and by Sango Harukawa illustrated, published in Young Ace magazine since 2012.</p>
-              </div>
-              <div class="action-buttons">
-                <button class="accept-btn">Accept</button>
-                <button class="remove-btn">Remove</button>
-            </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="single-explore-item">
-              <div class="single-explore-img">
-                <a href = #!><img src="/img/book2.jpg" alt="explore image"></a>
-              </div>
-              <div class="single-explore-txt bg-theme-5">
-                <h2><a href="#!">Bungou stray dogs: BEAST</a></h2>
-                <p class="explore-rating-price">
-                  <a href="shop.html"> Shop Name</a>   <!-- shop name -->
-                  <span class="explore-price-box">
-                    price:
-                    <span class="explore-price">10$</span>
-                  </span>
-                  <a  href="#!">asagiri kafka</a>
-                </p>
-                <p>Bungou Stray Dogs is a Japanese comic series written by Kafka Asagiri and by Sango Harukawa illustrated, published in Young Ace magazine since 2012.</p>
-              </div>
-              <div class="action-buttons">
-                <button class="accept-btn">Accept</button>
-                <button class="remove-btn">Remove</button>
-            </div>
-            </div>
-          </div>
-          </div>
-          
+          {{/each}}
+
         </div>
+          
       </div>
     </div>
   </div>    

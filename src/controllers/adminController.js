@@ -1,8 +1,126 @@
 const controller = {};
 const models = require("../models");
+const Sequelize = require('sequelize');
 
-controller.show = (req, res) => {
-	res.render('admin_hp', { title: "Homepage" , layout: "adminlayout", trangchu: true});
+controller.show = async (req, res) => {
+	const newbooks = await models.Book.findAll({
+		attributes: [
+		  "id",
+		  "title",
+		  "author",
+		  "imagePath",
+		  "price",
+		  "tags",
+		],
+		where: {
+			isVerified: true
+		},
+		order: [['updatedAt', 'DESC']], // Sorting by updatedAt in descending order
+		limit: 5
+	});
+
+	const trendingbooks = await models.Book.findAll({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imagePath",
+			"price",
+			"tags",
+		],
+		where: {
+			isVerified: true
+		},
+		order: [[Sequelize.literal('ARRAY_LENGTH("buyer", 1)'), 'DESC']],
+		limit: 5
+	});
+
+	const allbooks = await models.Book.findAll({
+		attributes: [
+		  "id",
+		  "title",
+		  "author",
+		  "imagePath",
+		  "price",
+		  "tags",
+		],
+		where: {
+			isVerified: true
+		},
+		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
+		limit: 5
+	});
+
+	res.render('admin_hp', { title: "Homepage" , layout: "adminlayout", trangchu: true, newbooks, trendingbooks, allbooks});
+}
+
+controller.showAll = async (req, res) => {
+	const allbooks = await models.Book.findAll({
+		attributes: [
+		  "id",
+		  "title",
+		  "author",
+		  "imagePath",
+		  "price",
+		  "tags",
+		],
+		where: {
+			isVerified: true
+		},
+		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
+	});
+	res.render('allbook', { title: "All", layout: "adminlayout", showAll: true, allbooks});
+}
+
+controller.showWaitlist = async (req, res) => {
+	const waitingbooks = await models.Book.findAll({
+		attributes: [
+			"id",
+			"title",
+			"owner",
+			"author",
+			"imagePath",
+			"price",
+			"description",
+			"tags",
+		],
+		where: {
+			isVerified: false
+		}
+	})
+	res.render('admin_waitlist', { title: "Waiting Posts", layout: "adminlayout", waitlist: true, waitingbooks});
+}
+
+controller.showReportBook = async (req, res) => {
+	const reportlists = await Report.findByPk(id, {
+		include: [
+		  { model: User, as: 'reportedUser' },
+		  { model: Book, as: 'reportedBook' }
+		]
+	  });
+	// const reportlists = await models.Report.findAll({
+	// 	attributes: [
+	// 	  "id",
+	// 	  "userId",
+	// 	  "reportedBookId",
+	// 	  "content",
+	// 	],
+	// 	where: {
+	// 		isBook: true
+	// 	},
+	// 	include: [
+	// 		{
+	// 			model: models.User,
+	// 			attributes: ["username"]
+	// 		},
+	// 		{
+	// 			model: models.Book,
+	// 			attributes: ["id", "title", "author", "imagePath", "price"]
+	// 		}
+	// 	]
+	// });
+	console.log(reportlists);
+	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, reportlists});
 }
 
 controller.showReportAcc = async (req, res) => {
@@ -10,7 +128,6 @@ controller.showReportAcc = async (req, res) => {
 		attributes: [
 		  "id",
 		  "userId",
-		  "username",
 		  "reportedId",
 		  "content",
 		],
@@ -18,34 +135,14 @@ controller.showReportAcc = async (req, res) => {
 			isBook: false
 		},
 		include: [
-			{ model: models.User }
+			{ 
+				model: models.User,
+				attributes: ["username"]
+			}
 		]
 	});
 
 	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, rpAccInfo});
-}
-
-controller.showReportBook = async (req, res) => {
-	const rpBookInfo = await models.Report.findAll({
-		attributes: [
-		  "id",
-		  "userId",
-		  "username",
-		  "reportedId",
-		  "content",
-		],
-		where: {
-			isBook: true
-		},
-		include: [
-			{ model: models.Book }
-		]
-	});
-	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, rpBookInfo});
-}
-
-controller.showWaitlist = (req, res) => {
-	res.render('admin_waitlist', { title: "Waiting Posts", layout: "adminlayout", waitlist: true});
 }
 
 controller.addUser = async (req, res) => {

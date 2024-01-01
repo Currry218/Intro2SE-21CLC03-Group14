@@ -177,6 +177,10 @@ controller.showCart = async (req, res) => {
 	res.render("user_cart", { title: "Cart" , layout: "userlayout", cartbooks, totalPrice});
 };
 
+controller.showPay = async (req, res) => {
+	res.render("user_pay", {title: "Pay", layout: "userlayout", id: res.locals.id});
+}
+
 controller.editUser = async (req, res) => {
 	let{id, username, password, email, balance, imagePath } = req.body;
 	try{

@@ -47,15 +47,27 @@ controller.showSignup = (req, res) => {
 }
 
 controller.signup = async (req, res) => {
-    let { fname, lname, email, password, isAdmin} = req.body;
+    let { username, email, password, isAdmin} = req.body;
     isAdmin = isAdmin === 'on';
-    console.log(isAdmin);
     try {
-        await User.create({ username: fname, password, email, isAdmin});
-        return res.render("login", {
-        layout: "guestlayout",
-        message: "You can now login using your registration!",
-      });
+        const userfound = await User.findOne({
+            attributes: ["id", "email"],
+            where: {email},
+        });
+
+        if (!userfound) {
+            await User.create({ username, password, email, isAdmin});
+            return res.render("login", {
+                layout: "guestlayout",
+                message: "You can now login using your registration!",
+            });
+        } else {
+            return res.render("/signup", {
+                layout: "guestlayout",
+                message: "Account with the given email existed!",
+            });
+        }
+        
     } catch (error) {
       console.error(error);
       return res.render("signup", {
