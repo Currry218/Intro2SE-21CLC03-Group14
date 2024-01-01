@@ -51,7 +51,7 @@ controller.show = async (req, res) => {
 		limit: 5
 	});
 
-	res.render('user_hp', { title: "Homepage" , layout: "userlayout", trangchu: true, id: res.locals.id, newbooks, trendingbooks, allbooks});
+	res.render('user_hp', { title: "Homepage" , layout: "userlayout", trangchu: true, userid: res.locals.userid, newbooks, trendingbooks, allbooks});
 }
 
 controller.showAll = async (req, res) => {
@@ -69,7 +69,7 @@ controller.showAll = async (req, res) => {
 		},
 		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
 	});
-	res.render('allbook', { title: "All", layout: "userlayout", showAll: true, allbooks});
+	res.render('allbook', { title: "All", layout: "userlayout", showAll: true, userid: res.locals.userid, allbooks});
 }
 
 controller.showWishlist = async (req, res) => {
@@ -78,7 +78,7 @@ controller.showWishlist = async (req, res) => {
 			"wishlist",
 		],
 		where: {
-			id: res.locals.id
+			id: res.locals.userid
 		}
 	});
 
@@ -96,7 +96,7 @@ controller.showWishlist = async (req, res) => {
 		}
 	})
 	
-	res.render("user_wishlist", { title: "Wishlist" , layout: "userlayout", id: res.locals.id, wishlistbooks});
+	res.render("user_wishlist", { title: "Wishlist" , layout: "userlayout", userid: res.locals.userid, wishlistbooks});
 };
 
 controller.showProfile = async (req, res) => {
@@ -108,7 +108,7 @@ controller.showProfile = async (req, res) => {
 			"boughtBooks",
 		],
 		where: {
-			id: res.locals.id
+			id: res.locals.userid
 		}
 	})
 
@@ -142,7 +142,7 @@ controller.showProfile = async (req, res) => {
 		}
 	})
 
-	res.render("user_profile", { title: "Profile" , layout: "userlayout", id: res.locals.id, userInfo, boughtbooks, sellingbooks});
+	res.render("user_profile", { title: "Profile" , layout: "userlayout", userid: res.locals.userid, userInfo, boughtbooks, sellingbooks});
 };
 
 controller.showCart = async (req, res) => {
@@ -151,7 +151,7 @@ controller.showCart = async (req, res) => {
 			"cart",
 		],
 		where: {
-			id: res.locals.id
+			id: res.locals.userid
 		}
 	});
 
@@ -174,11 +174,11 @@ controller.showCart = async (req, res) => {
 		totalPrice += parseFloat(cartbooks[i].price);
 	}
 
-	res.render("user_cart", { title: "Cart" , layout: "userlayout", cartbooks, totalPrice});
+	res.render("user_cart", { title: "Cart" , layout: "userlayout", userid: res.locals.userid, cartbooks, totalPrice});
 };
 
 controller.showPay = async (req, res) => {
-	res.render("user_pay", {title: "Pay", layout: "userlayout", id: res.locals.id});
+	res.render("user_pay", {title: "Pay", layout: "userlayout", userid: res.locals.userid});
 }
 
 controller.editUser = async (req, res) => {
@@ -197,4 +197,5 @@ controller.editUser = async (req, res) => {
 	}
 
 }
+
 module.exports = controller;

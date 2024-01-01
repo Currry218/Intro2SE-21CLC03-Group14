@@ -85,7 +85,7 @@ controller.loggedIn = async (req, res, next) => {
             return res.redirect("/admin");
         } else {
             res.locals.user = user;
-            res.locals.id = req.params.id;
+            res.locals.userid = req.params.id;
             return res.redirect(`/${user.id}`);
         }
     }
@@ -97,7 +97,7 @@ controller.userLoggedIn = async (req, res, next) => {
         const user = req.session.user;
         if (user.isAdmin == false && user.id == req.params.id) {
             res.locals.user = user;
-            res.locals.id = req.params.id;
+            res.locals.userid = req.params.id;
             return next();
         }
     }

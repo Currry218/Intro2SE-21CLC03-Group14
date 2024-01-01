@@ -18,8 +18,8 @@
     <div class="navbar">
       <div class="logo"><a href="/">BOOKEE</a></div>
       
-      {{#if id}}
-        <form action="/{{{id}}}/search" method="POST"></form>      
+      {{#if userid}}
+        <form action="/{{{userid}}}/search" method="POST"></form>      
       {{else}}
         <form action="/search" method="POST"></form>
       {{/if}}
@@ -28,10 +28,10 @@
       </form>
 
       <ul class ="menu d-flex me-0">
-        {{#if id}}
-          <li><a href="/{{{id}}}/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
-          <li><a href="/{{{id}}}/profile"><i class="fa fa-user"></i> Profile</a></li>
-          <li><a href="/{{{id}}}/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        {{#if userid}}
+          <li><a href="/{{{userid}}}/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
+          <li><a href="/{{{userid}}}/profile"><i class="fa fa-user"></i> Profile</a></li>
+          <li><a href="/{{{userid}}}/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
         {{else}}
           <li><a href="/wishlist"><i class="fa fa-heart"></i> Wishlist</a></li>
           <li><a href="/profile"><i class="fa fa-user"></i> Profile</a></li>
