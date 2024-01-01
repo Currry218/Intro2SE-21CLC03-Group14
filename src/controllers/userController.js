@@ -198,4 +198,56 @@ controller.editUser = async (req, res) => {
 
 }
 
+controller.showDetails = async (req, res) => {
+	if (req.params.id) {
+		res.locals.bookid = req.params.id;
+	}
+	const book = await models.Book.findOne({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imagePath",
+			"price",
+			"tags",
+			"description",
+		],
+		where: {
+			id: res.locals.bookid
+		},
+	});
+
+	const reviews = await models.Review.findAll({
+		attributes: [
+			"content",
+			"createdAt",
+		],
+		where: {
+			bookId: book.id
+		},
+		include: [
+			{
+				model: models.User,
+				attributes: ["username", "imagePath"]
+			}
+		]
+	})
+
+	const user = await models.User.findOne({
+		attributes: [
+			"username",
+			"imagePath",
+		],
+		where: {
+			id: res.locals.userid
+		}
+	});
+
+	res.render("productpage", {title: "Product", layout: "userlayout", book, reviews, user});
+}
+
+controller.showRegister = (req, res) => {
+	res.render("user_register", { title: "Register Book", layout: "userlayout", userid: res.locals.userid});
+}
+
 module.exports = controller;

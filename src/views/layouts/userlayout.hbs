@@ -19,9 +19,9 @@
       <div class="logo"><a href="/">BOOKEE</a></div>
       
       {{#if userid}}
-        <form action="/{{{userid}}}/search" method="POST"></form>      
+        <form action="/{{{userid}}}/search" method="POST">
       {{else}}
-        <form action="/search" method="POST"></form>
+        <form action="/search" method="POST">
       {{/if}}
         <input type="text" name="search" placeholder="Searching books..." />
         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
