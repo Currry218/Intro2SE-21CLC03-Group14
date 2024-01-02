@@ -601,3 +601,9 @@ content
     margin-left: auto;
     background-color: #e66e66; /* Red for remove */
   }
+  .text_report{
+    text-align: justify;
+    line-height: 1.5;
+    margin-right: 5%;
+    text-decoration-color: #393838;
+  }
