@@ -16,14 +16,13 @@ controller.showLogin = (req, res) => {
 
 controller.login = async (req, res) => {
     let { email, password } = req.body;
+    let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
     let user = await User.findOne({
         attributes: [ "id", "username", "password", "email", "balance", "isAdmin"],
         where: { email, password },
     });
     
     if (user) {
-        let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
-
         if (reqUrl=="/" && user.isAdmin == true) {
             reqUrl = "/admin";
         } else if (reqUrl=="/" && user.isAdmin == false) {
