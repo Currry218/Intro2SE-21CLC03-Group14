@@ -584,8 +584,8 @@ content
   
   .accept-btn,
   .remove-btn {
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 30%;
+    margin-left: 30%;
     /* right: 0%; */
     background-color: #424445; /* Gray for accept */
     color: white;
@@ -597,8 +597,8 @@ content
   }
   
   .remove-btn {
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 30%;
+    margin-left: 30%;
     background-color: #e66e66; /* Red for remove */
   }
   .text_report{
