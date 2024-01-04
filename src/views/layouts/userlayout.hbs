@@ -11,6 +11,41 @@
   <title>{{#if title}}{{{title}}}{{else}}BOOKEE{{/if}}</title>
   <!-- For logo png -->
 	<link rel="shortcut icon" type="image/icon" href="/scr/img/logo/logo.png"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    function addCart(userid, bookid) {
+      let data = {"id": bookid}
+      $.ajax({
+          type: 'PUT',
+          url: '/'+userid+'/addcart',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+
+    function removeCart(userid, bookid) {
+      let data = {"id": bookid}
+      $.ajax({
+          type: 'PUT',
+          url: '/'+userid+'/removecart',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+  </script>
 </head>
 
 <body>

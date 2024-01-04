@@ -243,11 +243,84 @@ controller.showDetails = async (req, res) => {
 		}
 	});
 
-	res.render("productpage", {title: "Product", layout: "userlayout", book, reviews, user});
+	res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user});
 }
 
 controller.showRegister = (req, res) => {
 	res.render("user_register", { title: "Register Book", layout: "userlayout", userid: res.locals.userid});
+}
+
+controller.addCart = async (req, res) => {
+	let { id } = req.body;
+	let userid = res.locals.userid;
+
+	const user = await models.User.findOne({
+		attributes: [
+			"cart",
+			"boughtBooks",
+		],
+		where: {
+			id: userid
+		}
+	});
+
+	console.log(user.cart);
+	console.log(user.boughtBooks);
+	if (user.cart.includes(parseInt(id)) || user.boughtBooks.includes(parseInt(id))) {
+		// console.log("already there");
+	} else {
+		user.cart.push(parseInt(id));
+		console.log("After: " + user.cart);
+		try {
+			await models.User.update(
+			  { cart : user.cart },
+			  { where: {id: userid} }
+			);
+		  //   res.send("Book added!");
+			return res.redirect("/" + userid + "/details/" + id);
+		} catch (error) {
+		  //   res.send("Can not add book!");
+			console.error(error);
+			return res.redirect("/" + userid + "/details/" + id);
+		}
+
+	}
+}
+
+controller.removeCart = async (req, res) => {
+	let { id } = req.body;
+	let userid = res.locals.userid;
+
+	const user = await models.User.findOne({
+		attributes: [
+			"cart",
+			"boughtBooks",
+		],
+		where: {
+			id: userid
+		}
+	});
+
+	console.log(user.cart);
+	console.log(user.boughtBooks);
+	if (user.cart.includes(parseInt(id))) {
+		user.cart.splice(user.cart.indexOf(id), 1);
+		console.log("After: " + user.cart);
+		try {
+			await models.User.update(
+			  { cart : user.cart },
+			  { where: {id: userid} }
+			);
+		  //   res.send("Book added!");
+			return res.redirect("/" + userid + "/details/" + id);
+		} catch (error) {
+		  //   res.send("Can not add book!");
+			console.error(error);
+			return res.redirect("/" + userid + "/details/" + id);
+		}
+	} else {
+
+	}
 }
 
 module.exports = controller;

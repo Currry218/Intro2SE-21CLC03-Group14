@@ -11,4 +11,7 @@ router.get("/pay", controller.showPay);
 router.get("/register", controller.showRegister);
 router.get("/", controller.show);
 
+router.put("/addcart", controller.addCart);
+router.put("/removecart", controller.removeCart);
+
 module.exports = router;
