@@ -72,6 +72,54 @@ controller.showAll = async (req, res) => {
 	res.render('allbook', { title: "All", layout: "adminlayout", showAll: true, allbooks});
 }
 
+controller.showDetails = async (req, res) => {
+	if (req.params.id) {
+		res.locals.bookid = req.params.id;
+	}
+	const book = await models.Book.findOne({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imagePath",
+			"price",
+			"tags",
+			"description",
+		],
+		where: {
+			id: res.locals.bookid
+		},
+	});
+
+	const reviews = await models.Review.findAll({
+		attributes: [
+			"content",
+			"createdAt",
+		],
+		where: {
+			bookId: book.id
+		},
+		include: [
+			{
+				model: models.User,
+				attributes: ["username", "imagePath"]
+			}
+		]
+	})
+
+	const user = await models.User.findOne({
+		attributes: [
+			"username",
+			"imagePath",
+		],
+		where: {
+			id: res.locals.user.id
+		}
+	});
+	
+	res.render("productpage", {title: "Product", layout: "adminlayout", book, reviews, user});
+}
+
 controller.showWaitlist = async (req, res) => {
 	const waitingbooks = await models.Book.findAll({
 		attributes: [
@@ -92,12 +140,6 @@ controller.showWaitlist = async (req, res) => {
 }
 
 controller.showReportBook = async (req, res) => {
-	// const reportlists = await Report.findByPk(id, {
-	// 	include: [
-	// 	  { model: User, as: 'reportedUser' },
-	// 	  { model: Book, as: 'reportedBook' }
-	// 	]
-	//   });
 	const reportlists = await models.Report.findAll({
 		attributes: [
 		  "id",
@@ -152,68 +194,35 @@ controller.showReportAcc = async (req, res) => {
 	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, reportlists});
 }
 
-controller.addUser = async (req, res) => {
-	let{username, password, email, balance, imagePath} = req.body;
+controller.updateBook = async (req, res) => {
+	let { id } = req.body;
 	try {
-		await models.User.create({
-			username, password, email, balance, imagePath,
-			isAdmin: isAdmin ? true:false,
-		});
-		res.redirect("/users"); //NHO SUA
-	} catch(error) {
-		res.send("Can not add user");
-		console.error(error);
+	  await models.Book.update(
+		{ isVerified: true },
+		{ where: {id} }
+	  );
+	  console.log("Sao diiiiiiiiii");
+	//   res.send("Book added!");
+	  return res.redirect("admin/");
+	} catch (error) {
+	//   res.send("Can not add book!");
+	  console.error(error);
+	  return res.redirect("/admin/waitlist");
 	}
 }
-controller.deleteUser = async (req, res) => {
-	let id = isNaN(req.params.id) ? 0: parseInt(req.params.id);
-	try{
-		await models.User.destroy({where: {id}});
-		res.send("User deleted!");
 
-	} catch (error){
-		res.send("Can not delete user");
-		console.error(error);
-	}
-}
-controller.addBook = async (req, res) => {
-	let{title,owner,ownerId,author,imagePath,price,tags,description} = req.body;
-	try {
-		await models.Book.create({
-			title,owner,ownerId,author,imagePath,price,tags,description,
-		});
-		res.redirect("/Books"); //NHO SUA
-	} catch(error) {
-		res.send("Can not add Book");
-		console.error(error);
-	}
-}
-controller.editBook = async (req, res) => {
-	let{id, title,owner,ownerId,author,imagePath,price,tags,description}= req.body;
-	try{
-		await models.Book.update(
-			{title,owner,ownerId,author,imagePath,price,tags,description},
-			{where: {id}},  
-		);
-		res.send("Book updated");
-	} 
-	catch(error) {
-		res.send("Can not add Book");
-		console.error(error);
-	}
-
-}
 controller.deleteBook = async (req, res) => {
-	let id = isNaN(req.params.id) ? 0: parseInt(req.params.id);
-	try{
-		await models.Book.destroy({where: {id}});
-		res.send("Book deleted!");
-
-	} catch (error){
-		res.send("Can not delete Book");
+	let { id } = req.body;
+	console.log(req.body.id);
+	try {
+		await models.Book.destroy({ where: {id} });
+		// res.send("Removed register request!");
+		return res.redirect("/admin/waitlist");
+	  } catch (error) {
+		// res.send("Can not remove register request!");
 		console.error(error);
-	}
+		return res.redirect("/admin/waitlist");
+	  }
 }
-
 
 module.exports = controller;

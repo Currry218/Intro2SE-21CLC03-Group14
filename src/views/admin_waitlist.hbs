@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="/css/style.css">
+{{!-- <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/book.css">  
+<link rel="stylesheet" href="/css/book.css">   --}}
 
 <section class="explore">
   <div class="container">
@@ -30,8 +30,8 @@
                 </div>
               </div>
               <div class="action-buttons">
-                <button class="accept-btn">Accept</button>
-                <button class="remove-btn">Remove</button>
+                <button onclick="updateBook('{{id}}')" class="accept-btn">Accept</button>
+                <button onclick="deleteBook('{{id}}')" class="remove-btn">Remove</button>
             </div>
             </div>
           </div>
@@ -43,3 +43,36 @@
     </div>
   </div>    
 </section><!--/.explore-->
+
+<script>
+  function updateBook(id) {
+    let data = {"id": id}
+    $.ajax({
+        type: 'PUT',
+        url: '/admin/updatebook',
+        contentType: 'application/json',
+        data: JSON.stringify(data), // access in body
+    }).done(function () {
+        console.log('SUCCESS');
+    }).fail(function (msg) {
+        console.log('FAIL');
+    }).always(function (msg) {
+        console.log('ALWAYS');
+    });
+  }
+  function deleteBook(id) {
+    let data = {"id": id}
+    $.ajax({
+        type: 'DELETE',
+        url: '/admin/deletebook',
+        contentType: 'application/json',
+        data: JSON.stringify(data), // access in body
+    }).done(function () {
+        console.log('SUCCESS');
+    }).fail(function (msg) {
+        console.log('FAIL');
+    }).always(function (msg) {
+        console.log('ALWAYS');
+    });
+  }
+</script>
