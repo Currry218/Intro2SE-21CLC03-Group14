@@ -26,8 +26,12 @@ module.exports = {
       imagePath: {
         type: Sequelize.STRING
       },
+      filePath: {
+        type: Sequelize.STRING
+      },
       price: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL,
+        defaultValue: 0.0,
       },
       tags: {
         type: Sequelize.ARRAY(Sequelize.STRING)
@@ -39,7 +43,8 @@ module.exports = {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       isVerified: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       reviews: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
