@@ -82,3 +82,13 @@ li {
 .menu li {
     padding-left: 30px
 }
+
+/* Them */
+body { 
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+ }
+ .body-wrapper {
+    flex: 1;
+ }
