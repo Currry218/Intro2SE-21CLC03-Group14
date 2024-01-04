@@ -243,6 +243,23 @@ controller.showDetails = async (req, res) => {
 		}
 	});
 
+	const tagsArray = Array.isArray(book.tags) ? book.tags : [book.tags];
+
+	const rcm = await models.Book.findAll({
+		attributes: [
+		"id",
+		"title",
+		"author",
+		"imagePath",
+		"price",
+		"tags",
+		],
+		where: {
+			tags: {[Sequelize.Op.overlap]: tagsArray,},
+			id: {[Sequelize.Op.ne]: book.id,},
+		},
+		limit: 5,
+	});	
 	res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user});
 }
 

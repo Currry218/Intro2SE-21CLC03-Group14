@@ -104,7 +104,7 @@
 		<div class="comment-list">
 			<div class="flex">
 				<div class="user">
-					<div class="user-image"><img src={{User.imagePath}} alt=""></div>
+					<div class="user-image"><img src={{User.imagePath}} alt="/img/logoicon.png"></div>
 						<div class="user-meta">
 							<div class="name">{{User.username}}</div>
 							<div class="day">{{showDate createdAt}}</div>
@@ -124,7 +124,7 @@
 			<form action="" class="comment-box">
 				{{#with user}}
 				<div class="user">
-					<div class="img-u"><img src={{imagePath}} alt=""></div>
+					<div class="img-u"><img src={{imagePath}} alt="/img/logoicon.png"></div>
 					<div class="name">{{username}}</div>
 				</div>
 				<textarea name="comment"></textarea><div class="row"></div>
@@ -143,112 +143,29 @@
 			<div class="product-head">
 				<h1>Reccomend books</h1>
 				<div class="row">
-				<div class=" col">
-					<div class="single-explore-item">
-					<div class="single-explore-img">
-						<img src="/img/explore/e1.jpg" alt="explore image">
-					</div>
-					<div class="single-explore-txt bg-theme-5">
-						<h2><a href="#!">you want it darker</a></h2>
-						<p class="explore-rating-price">
-						<span class="explore-price-box">
-							price:
-							<span class="explore-price">10$</span>
-						</span>
-						<span class="explore-price-genne">
-							novel
-						</span>
-						<a  href="#!">leonard cohen</a>
-						</span>
-						</p>
-					</div>
-					</div>
-				</div>
-				<div class=" col">
-					<div class="single-explore-item">
+				{{#each rcm}}
+					<div class="col">
+						<div class="single-explore-item">
 						<div class="single-explore-img">
-						<img src="/img/explore/e1.jpg" alt="explore image">
+							<a href = "productpage.html"><img src={{imagePath}} alt="/img/logoicon.png"></a>
 						</div>
 						<div class="single-explore-txt bg-theme-5">
-						<h2><a href="#!">you want it darker</a></h2>
-						<p class="explore-rating-price">
+							<h2><a href="productpage.html">{{title}}</a></h2>
+							<p class="explore-rating-price">
 							<span class="explore-price-box">
-							price:
-							<span class="explore-price">10$</span>
+								price:
+								<span class="explore-price">{{price}}</span>
 							</span>
 							<span class="explore-price-genne">
-							novel
+								novel {{!-- thiếu genre --}}
 							</span>
-							<a  href="#!">leonard cohen</a>
+							<a  href="#!">{{author}}</a>
 							</span>
-						</p>
+							</p>
+						</div>
 						</div>
 					</div>
-					</div>
-					<div class=" col">
-					<div class="single-explore-item">
-						<div class="single-explore-img">
-						<img src="/img/explore/e1.jpg" alt="explore image">
-						</div>
-						<div class="single-explore-txt bg-theme-5">
-						<h2><a href="#!">you want it darker</a></h2>
-						<p class="explore-rating-price">
-							<span class="explore-price-box">
-							price:
-							<span class="explore-price">10$</span>
-							</span>
-							<span class="explore-price-genne">
-							novel
-							</span>
-							<a  href="#!">leonard cohen</a>
-							</span>
-						</p>
-						</div>
-					</div>
-					</div>
-	
-				<div class=" col">
-					<div class="single-explore-item">
-					<div class="single-explore-img">
-						<img src="/img/explore/e2.jpg" alt="explore image">
-					</div>
-					<div class="single-explore-txt bg-theme-5">
-						<h2><a href="#!">Omestic Reader Overview</a></h2>
-						<p class="explore-rating-price">
-						<span class="explore-price-box">
-							price:
-							<span class="explore-price">10$</span>
-						</span>
-						<span class="explore-price-genne">
-							novel
-						</span>
-						<a  href="#!">leonard cohen</a>
-						</span>
-						</p>
-					</div>
-					</div>
-				</div>
-	
-				<div class=" col">
-					<div class="single-explore-item">
-					<div class="single-explore-img">
-						<img src="/img/book2.jpg" alt="explore image">
-					</div>
-					<div class="single-explore-txt bg-theme-5">
-						<h2><a href="#!">bungou stray dogs: BEAST</a></h2>
-						<p class="explore-rating-price">
-						<span class="explore-price-box">
-							price:
-							<span class="explore-price">10$</span>
-						</span>
-						<span class="explore-price-genne">
-							novel
-						</span>
-						<a  href="#!">asagiri kafka</a>
-						</p>
-					</div>
-					</div>
-				</div>
+				{{/each}}
 				</div>
 			</div>
 	
