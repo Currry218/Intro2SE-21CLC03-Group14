@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     ownerId: DataTypes.INTEGER,
     author: DataTypes.STRING,
     imagePath: DataTypes.STRING,
+    filePath: DataTypes.STRING,
     price: DataTypes.DECIMAL,
     tags: DataTypes.ARRAY(DataTypes.STRING),
     isVerified: DataTypes.BOOLEAN,

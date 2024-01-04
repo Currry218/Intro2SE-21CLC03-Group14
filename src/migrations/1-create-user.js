@@ -15,20 +15,23 @@ module.exports = {
         primaryKey: true,
         unique: true, // Add unique constraint to username
         type: Sequelize.STRING,
-      },      password: {
+      },      
+      password: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
       },
       balance: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL,
+        defaultValue: 0.0,
       },
       imagePath: {
         type: Sequelize.STRING
       },
       isAdmin: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       wishlist: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
