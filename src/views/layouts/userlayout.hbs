@@ -45,6 +45,40 @@
           console.log('ALWAYS');
       });
     }
+
+    function addWishlist(userid, bookid) {
+      let data = {"id": bookid}
+      $.ajax({
+          type: 'PUT',
+          url: '/'+userid+'/addwishlist',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+
+    function removeWishlist(userid, bookid) {
+      let data = {"id": bookid}
+      $.ajax({
+          type: 'PUT',
+          url: '/'+userid+'/removewishlist',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+
+
   </script>
 </head>
 

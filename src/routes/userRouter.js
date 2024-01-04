@@ -13,5 +13,7 @@ router.get("/", controller.show);
 
 router.put("/addcart", controller.addCart);
 router.put("/removecart", controller.removeCart);
+router.put("/addwishlist", controller.addWishlist);
+router.put("/removewishlist", controller.removeWishlist);
 
 module.exports = router;

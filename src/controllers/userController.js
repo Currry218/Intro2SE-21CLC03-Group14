@@ -323,4 +323,69 @@ controller.removeCart = async (req, res) => {
 	}
 }
 
+controller.addWishlist = async (req, res) => {
+	let { id } = req.body;
+	let userid = res.locals.userid;
+
+	const user = await models.User.findOne({
+		attributes: [
+			"wishlist",
+		],
+		where: {
+			id: userid
+		}
+	});
+
+	if (user.wishlist.includes(parseInt(id))) {
+		// console.log("already there");
+	} else {
+		user.wishlist.push(parseInt(id));
+		try {
+			await models.User.update(
+			  { wishlist : user.wishlist },
+			  { where: {id: userid} }
+			);
+		  //   res.send("Book added!");
+			return res.redirect("/" + userid + "/details/" + id);
+		} catch (error) {
+		  //   res.send("Can not add book!");
+			console.error(error);
+			return res.redirect("/" + userid + "/details/" + id);
+		}
+
+	}
+}
+
+controller.removeWishlist = async (req, res) => {
+	let { id } = req.body;
+	let userid = res.locals.userid;
+
+	const user = await models.User.findOne({
+		attributes: [
+			"wishlist",
+		],
+		where: {
+			id: userid
+		}
+	});
+
+	if (user.wishlist.includes(parseInt(id))) {
+		user.wishlist.splice(user.wishlist.indexOf(id), 1);
+		try {
+			await models.User.update(
+			  { wishlist : user.wishlist },
+			  { where: {id: userid} }
+			);
+		  //   res.send("Book added!");
+			return res.redirect("/" + userid + "/details/" + id);
+		} catch (error) {
+		  //   res.send("Can not add book!");
+			console.error(error);
+			return res.redirect("/" + userid + "/details/" + id);
+		}
+	} else {
+
+	}
+}
+
 module.exports = controller;
