@@ -260,6 +260,13 @@ controller.updateBook = async (req, res) => {
 controller.deleteBook = async (req, res) => {
 	let { id } = req.body;
 	try {
+		await User.update(
+			{
+			  wishlist: sequelize.literal(`array_remove("wishlist", '${id}')`),
+			  cart: sequelize.literal(`array_remove("cart", '${id}')`),
+			  boughtBooks: sequelize.literal(`array_remove("boughtBooks", '${id}')`),
+			}
+		);
 		await models.Book.destroy({ where: {id} });
 		// res.send("Removed register request!");
 		return res.redirect("/admin/waitlist");
@@ -282,11 +289,33 @@ controller.deleteReport = async (req, res) => {
 		return res.redirect("/admin/waitlist");
 	  }
 }
+controller.deleteReview = async (req, res) => {
+	let { id } = req.body;
+	try {
+		await Book.update(
+			{
+			  reviews: sequelize.literal(`array_remove("reviews", '${id}')`),
+			}
+		);
+
+		await models.Review.destroy({ where: {id} });
+		// res.send("Removed register request!");
+		return res.redirect("/admin/waitlist");
+	  } catch (error) {
+		// res.send("Can not remove register request!");
+		console.error(error);
+		return res.redirect("/admin/waitlist");
+	  }
+}
 
 controller.deleteUser = async (req, res) => {
 	let { id } = req.body;
 	console.log(id);
 	try {
+		await Book.update(
+			{ ownerId: 1},
+			{ where: { ownerId: id } 
+		});
 		await models.User.destroy({ where: {id} });
 		// res.send("Removed register request!");
 		return res.redirect("/admin/waitlist");
