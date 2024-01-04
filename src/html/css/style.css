@@ -580,12 +580,14 @@ content
 
 .action-buttons {
     position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
   
   .accept-btn,
   .remove-btn {
-    margin-right: 30%;
-    margin-left: 30%;
+    margin-right: auto;
+    margin-left: auto;
     /* right: 0%; */
     background-color: #424445; /* Gray for accept */
     color: white;
@@ -597,13 +599,17 @@ content
   }
   
   .remove-btn {
-    margin-right: 30%;
-    margin-left: 30%;
+    margin-right: auto;
+    margin-left: auto;
     background-color: #e66e66; /* Red for remove */
   }
   .text_report{
     text-align: justify;
     line-height: 1.5;
     margin-right: 5%;
+    margin-left: 5%;
     text-decoration-color: #393838;
+  }
+  .space2{
+    padding: 50%;
   }
