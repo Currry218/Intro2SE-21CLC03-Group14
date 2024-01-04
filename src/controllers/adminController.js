@@ -162,7 +162,7 @@ controller.showReportBook = async (req, res) => {
 			}
 		]
 	});
-	console.log(reportlists);
+
 	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, reportlists});
 }
 
@@ -190,7 +190,7 @@ controller.showReportAcc = async (req, res) => {
 			}
 		]
 	});
-	console.log(reportlists);
+
 	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, reportlists});
 }
 
@@ -201,7 +201,6 @@ controller.updateBook = async (req, res) => {
 		{ isVerified: true },
 		{ where: {id} }
 	  );
-	  console.log("Sao diiiiiiiiii");
 	//   res.send("Book added!");
 	  return res.redirect("admin/");
 	} catch (error) {
@@ -213,9 +212,21 @@ controller.updateBook = async (req, res) => {
 
 controller.deleteBook = async (req, res) => {
 	let { id } = req.body;
-	console.log(req.body.id);
 	try {
 		await models.Book.destroy({ where: {id} });
+		// res.send("Removed register request!");
+		return res.redirect("/admin/waitlist");
+	  } catch (error) {
+		// res.send("Can not remove register request!");
+		console.error(error);
+		return res.redirect("/admin/waitlist");
+	  }
+}
+
+controller.deleteReport = async (req, res) => {
+	let { id } = req.body;
+	try {
+		await models.Report.destroy({ where: {id} });
 		// res.send("Removed register request!");
 		return res.redirect("/admin/waitlist");
 	  } catch (error) {

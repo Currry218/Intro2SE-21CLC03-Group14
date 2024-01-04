@@ -13,10 +13,10 @@
           <div class=" col">
             <div class="single-explore-item">
               <div class="single-explore-img">
-                <a href = "/admin/{{id}}"><img src={{Book.imagePath}} alt="explore image"></a>
+                <a href = "/admin/details/{{Book.id}}"><img src={{Book.imagePath}} alt="explore image"></a>
               </div>
               <div class="single-explore-txt bg-theme-5">
-                <h2><a href="/admin/{{id}}">{{Book.title}}</a></h2>
+                <h2><a href="/admin/details/{{Book.id}}">{{Book.title}}</a></h2>
                 <p class="explore-rating-price">
                   <span class="explore-price-box">
                     price:
@@ -25,15 +25,15 @@
                   <span class="explore-price-genne">
                     novel
                   </span>
-                  <a  href="/admin/{{id}}">{{Book.author}}</a>
+                  <a  href="">{{Book.author}}</a>
                   </span>
                 </p>
                 <div class="text_report">
                 <p>"{{content}}" - Reported by {{User.username}}</p>
                 </div>
                 <div class="action-buttons">
-                  <button class="accept-btn">Ban</button>
-                  <button class="remove-btn">Remove</button>
+                  <button onclick="deleteBook('{{Book.id}}')" class="accept-btn">Ban</button>
+                  <button onclick="deleteReport('{{id}}')" class="remove-btn">Remove</button>
               </div>
               </div>
             </div>

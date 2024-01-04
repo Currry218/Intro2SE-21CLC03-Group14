@@ -15,6 +15,53 @@
     <link rel="shortcut icon" type="image/icon" href="/scr/img/logo/logo.png"/>
   <!-- Add jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    function updateBook(id) {
+      let data = {"id": id}
+      $.ajax({
+          type: 'PUT',
+          url: '/admin/updatebook',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+    function deleteBook(id) {
+      let data = {"id": id}
+      $.ajax({
+          type: 'DELETE',
+          url: '/admin/deletebook',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+    function deleteReport(id) {
+      let data = {"id": id}
+      $.ajax({
+          type: 'DELETE',
+          url: '/admin/deletereport',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
+  </script>
 </head>
 
 

@@ -11,5 +11,6 @@ router.get("/", controller.show);
 
 router.put("/updatebook", controller.updateBook);
 router.delete("/deletebook", controller.deleteBook);
+router.delete("/deletereport", controller.deleteReport);
 
 module.exports = router;
