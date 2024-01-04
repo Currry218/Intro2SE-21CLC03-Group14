@@ -194,6 +194,53 @@ controller.showReportAcc = async (req, res) => {
 	res.render('admin_rpacc', { title: "Accounts Management", layout: "adminlayout", rpacc: true, reportlists});
 }
 
+controller.showProfile = async (req, res) => {
+	
+	const userInfo = await models.User.findOne({
+		attributes: [
+			"id",
+			"username",
+			"imagePath",
+			"boughtBooks",
+		],
+		where: {
+			id: req.params.id
+		}
+	})
+
+	const boughtbooks = await models.Book.findAll({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imagePath",
+			"price",
+			"tags",
+		],
+		where: {
+			id: userInfo.boughtBooks
+		}
+	})
+
+	const sellingbooks = await models.Book.findAll({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imagePath",
+			"price",
+			"tags",
+			"ownerId",
+		],
+		where: {
+			ownerId: userInfo.id,
+			isVerified: true
+		}
+	})
+
+	res.render("user_profile", { title: "Profile" , layout: "userlayout", userid: req.params.id, userInfo, boughtbooks, sellingbooks});
+}
+
 controller.updateBook = async (req, res) => {
 	let { id } = req.body;
 	try {
@@ -227,6 +274,20 @@ controller.deleteReport = async (req, res) => {
 	let { id } = req.body;
 	try {
 		await models.Report.destroy({ where: {id} });
+		// res.send("Removed register request!");
+		return res.redirect("/admin/waitlist");
+	  } catch (error) {
+		// res.send("Can not remove register request!");
+		console.error(error);
+		return res.redirect("/admin/waitlist");
+	  }
+}
+
+controller.deleteUser = async (req, res) => {
+	let { id } = req.body;
+	console.log(id);
+	try {
+		await models.User.destroy({ where: {id} });
 		// res.send("Removed register request!");
 		return res.redirect("/admin/waitlist");
 	  } catch (error) {

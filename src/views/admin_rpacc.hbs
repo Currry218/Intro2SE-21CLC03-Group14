@@ -17,7 +17,7 @@
                     <div class="row">
                       <div class="col-sm-2">
                         <div class="post-person-img">
-                          <a href="#">
+                          <a href="/admin/profile/{{reportedUserId}}">
                             <img src={{ReportedUser.imagePath}} alt="post person">
                           </a>
                         </div>
@@ -38,8 +38,8 @@
                     </div>
                   </div>
                   <div class="action-buttons">
-                          <button class="accept-btn">Ban</button>
-                          <button class="remove-btn">Remove</button>
+                          <button onclick="deleteUser('{{reportedUserId}}')" class="accept-btn">Ban</button>
+                          <button onclick="deleteReport('{{id}}')" class="remove-btn">Remove</button>
                       </div>
                 </p>
               </div>

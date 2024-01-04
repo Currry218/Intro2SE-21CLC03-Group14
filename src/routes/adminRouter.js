@@ -2,6 +2,7 @@ const express = require("express");
 const controller = require("../controllers/adminController");
 const router = express.Router();
 
+router.get("/profile/:id", controller.showProfile);
 router.get("/details/:id", controller.showDetails);
 router.get("/all", controller.showAll);
 router.get("/reportbook", controller.showReportBook);
@@ -12,5 +13,6 @@ router.get("/", controller.show);
 router.put("/updatebook", controller.updateBook);
 router.delete("/deletebook", controller.deleteBook);
 router.delete("/deletereport", controller.deleteReport);
+router.delete("/deleteuser", controller.deleteUser);
 
 module.exports = router;

@@ -61,6 +61,21 @@
           console.log('ALWAYS');
       });
     }
+    function deleteUser(id) {
+      let data = {"id": id}
+      $.ajax({
+          type: 'DELETE',
+          url: '/admin/deleteuser',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
   </script>
 </head>
 
