@@ -47,6 +47,9 @@ controller.showSignup = (req, res) => {
 
 controller.signup = async (req, res) => {
     let { username, email, password, isAdmin} = req.body;
+    let wishlist = [];
+    let cart = [];
+    let boughtBooks = [];
     isAdmin = isAdmin === 'on';
     try {
         const userfound = await User.findOne({
@@ -55,7 +58,7 @@ controller.signup = async (req, res) => {
         });
 
         if (!userfound) {
-            await User.create({ username, password, email, isAdmin});
+            await User.create({ username, password, email, isAdmin, wishlist, cart, boughtBooks});
             return res.render("login", {
                 layout: "guestlayout",
                 message: "You can now login using your registration!",
