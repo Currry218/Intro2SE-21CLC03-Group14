@@ -333,7 +333,42 @@ controller.showRegister = (req, res) => {
 controller.purchase = async (req, res) => {
 	let { totalAddUp } = req.body;
 	console.log(totalAddUp);
-	res.redirect("/" + res.locals.userid);
+	let user = await models.User.findOne({
+		attributes: [
+			"cart",
+			"boughtBooks",
+		],
+		where: {
+			id: res.locals.userid,
+		}
+	});
+	let admin = await models.User.findOne({
+		attributes: [
+			"balance"
+		],
+		where: {
+			isAdmin: true,
+		}
+	});
+	totalAddUp = totalAddUp + admin.balance;
+	try{
+		// await models.User.update(
+		// 	{ balance : totalAddUp },
+		// 	{ where: {isAdmin: true} }
+		// );
+		await models.User.update(
+		{ 
+			boughtBooks: user.boughtBooks.concat(user.cart), 
+			cart: [],
+		},
+			{ where: {id: res.locals.userid,} }
+		);
+		return res.redirect("/" + res.locals.userid + "/cart");
+	} catch (error) {
+		console.error(error);
+		return res.redirect("/" + res.locals.userid + "/cart");
+	}
+	// res.redirect("/" + res.locals.userid);
 }
 controller.addCart = async (req, res) => {
 	let { id } = req.body;
@@ -484,11 +519,12 @@ controller.registerBook = async (req, res) => {
     // }
 	const tags = Array.isArray(req.body.tags) ? req.body.tags : [req.body.tags];
 	const isVerified = false;
-	let {title, filePath, price, description} = req.body;
+	let {title, filePath, price, author, description} = req.body;
+	// console.log(req.body);
 	let ownerId = res.locals.userid;
 
 	try {
-		await models.Book.create({title, ownerId, filePath, price, description, isVerified, tags, imgData: buffer});
+		await models.Book.create({title, ownerId, filePath, price, author, description, isVerified, tags, imgData: buffer});
 		return res.redirect("/" + res.locals.userid + "/profile");
 	} catch (error) {
 		console.error(error);
