@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/css/book.css">
+<link rel="stylesheet" href="/css/header.css">
+
+<section class="explore">
+  <div class="container">
+    <div class="explore-content">
+      
+      <div class="space"></div>
+      <div class="product-head">
+        <h1>All books</h1>
+        
+        <div class="row row-cols-5">
+          {{#each allbooks}}
+          <div class="col">
+            <div class="single-explore-item">
+              <div class="single-explore-img">
+                <a href = "/{{../userid}}/details/{{id}}"><img src={{imagePath}} alt="/img/logoicon.png"></a>
+              </div>
+              <div class="single-explore-txt bg-theme-5">
+                <h2><a href="/{{../userid}}/details/{{id}}">{{title}}</a></h2>
+                <p class="explore-rating-price">
+                  <span class="explore-price-box">
+                    price:
+                    <span class="explore-price">{{price}}</span>
+                  </span>
+                  <span class="explore-price-genne">
+                    novel {{!-- thiếu genre --}}
+                  </span>
+                  <a  href="#!">{{author}}</a>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+</section><!--/.explore-->
+<!--explore end -->

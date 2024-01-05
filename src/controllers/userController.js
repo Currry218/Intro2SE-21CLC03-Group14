@@ -95,7 +95,7 @@ controller.showAll = async (req, res) => {
 	});
 	convertAll(allbooks);
 
-	res.render('allbook', { title: "All", layout: "userlayout", showAll: true, userid: res.locals.userid, allbooks});
+	res.render('user_allbook', { title: "All", layout: "userlayout", showAll: true, userid: res.locals.userid, allbooks});
 }
 
 controller.showDetails = async (req, res) => {

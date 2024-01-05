@@ -95,7 +95,7 @@ controller.showAll = async (req, res) => {
 	});
 	convertAll(allbooks);
 
-	res.render('allbook', { title: "All", layout: "adminlayout", showAll: true, allbooks});
+	res.render('admin_allbook', { title: "All", layout: "adminlayout", showAll: true, allbooks});
 }
 
 controller.showDetails = async (req, res) => {
