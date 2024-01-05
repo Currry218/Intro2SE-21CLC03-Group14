@@ -151,3 +151,12 @@ button {
     border-left: 1px solid #ffffff;
     border-right: 1px solid #dde0e4;
 }
+
+.explore-upload{
+    background-color: #353432;
+    color: #eee;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    border: none;
+}
