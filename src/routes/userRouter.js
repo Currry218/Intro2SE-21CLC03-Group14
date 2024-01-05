@@ -18,7 +18,22 @@ router.put("/addcart", controller.addCart);
 router.put("/removecart", controller.removeCart);
 router.put("/addwishlist", controller.addWishlist);
 router.put("/removewishlist", controller.removeWishlist);
-
+router.put("/postcomment", controller.postComment);
+// router.post('/comments', (req, res) => {
+//     console.log(req.body);
+//     const { username, comment, bookId } = req.body;
+  
+//     // Save the comment to the database
+  
+//     res.json({ success: true, message: 'Comment added successfully' });
+//   });
+router.get("/", controller.show);
+// router.all('/*', function(req, res) {
+//     res.status(404).send('Not Found');
+//     console.log("Vao day a");
+// });
 router.post("/register", upload.single('bookcover'), controller.registerBook);
 
 module.exports = router;
+
+

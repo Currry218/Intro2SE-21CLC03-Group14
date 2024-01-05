@@ -97,6 +97,61 @@
 		</div>
 </div>
 
+<!-- Inside your HTML file -->
+{{!-- <script>
+  $(document).ready(function () {
+    // Function to load comments from the server
+    function loadComments() {
+      // Assuming you have a route for getting comments
+      $.get('/comments', function (data) {
+        const commentsContainer = $('#comments-container');
+        commentsContainer.empty();
+
+        data.forEach(comment => {
+          commentsContainer.append(`
+            <div class="comment-list">
+              <div class="flex">
+                <div class="user">
+                  <div class="user-image"><img src=${comment.User.imagePath} alt="/img/logoicon.png"></div>
+                  <div class="user-meta">
+                    <div class="name">${comment.User.username}</div>
+                    <div class="day">${showDate(comment.createdAt)}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                ${comment.content}
+              </div>
+            </div>
+          `);
+        });
+      });
+    }
+
+    // Handling form submission with AJAX
+    $('.comment-box').submit(function (event) {
+      event.preventDefault();
+
+      const comment = $('textarea[name="comment"]').val();
+      const bookId = '{{book.id}}'; // Assuming you have access to the book ID
+
+      $.post('/comments', { username: '{{user.username}}', comment, bookId }, function (data) {
+        if (data.success) {
+          // If comment added successfully, reload comments
+          loadComments();
+
+          // Clear the form input
+          $('textarea[name="comment"]').val('');
+        }
+      });
+    });
+
+    // Initial loading of comments
+    loadComments();
+  });
+</script> --}}
+
+
 <div class="container">
 	<section class="explore">
 		<div class="container">
@@ -124,18 +179,19 @@
 				</div>
 		</div>
 		{{/each}}
-			<form action="" class="comment-box">
+			<form action="/{{userid}}/postcomment" class="comment-box">
 				{{#with user}}
 				<div class="user">
 					<div class="img-u"><img src={{imagePath}} alt="/img/logoicon.png"></div>
 					<div class="name">{{username}}</div>
 				</div>
-				<textarea name="comment"></textarea><div class="row"></div>
-				<button class="comment-submit">Comment</button>
 				{{/with}}
+				<textarea id="comment" name="comment"></textarea><div class="row"></div>
+				<button class="comment-submit" onclick="postComment('{{userid}}', '{{bookid}}')">Comment</button>
 			</form>
 		</div>
 	</div>
+	
 </div>
 </div>
 

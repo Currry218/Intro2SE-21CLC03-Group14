@@ -263,7 +263,7 @@ controller.showDetails = async (req, res) => {
 		attributes: [
 			"username",
 			"imagePath",
-			"boughtBooks",
+			"boughtBooks"
 		],
 		where: {
 			id: res.locals.userid
@@ -289,9 +289,9 @@ controller.showDetails = async (req, res) => {
 	});	
 
 	if (user.boughtBooks.includes(book.id)) {
-		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user, showlink: true});
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user, showlink: true});
 	} else {
-		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user});
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user});
 	}	
 }
 
@@ -464,4 +464,14 @@ controller.registerBook = async (req, res) => {
 	// 	return res.redirect("/" + res.locals.userid + "/");
 	// }
 }
+controller.postComment = async (req, res) => {
+    let {id, content} = req.body;
+    console.log(id, content);
+	await models.Review.create({ userId: res.locals.userid, bookId: id, content: content});
+	// Sua sau
+	return res.redirect("/" + res.locals.userid + "/details/" + id);
+    
+}
+
+
 module.exports = controller;

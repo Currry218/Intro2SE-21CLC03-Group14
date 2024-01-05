@@ -78,6 +78,22 @@
       });
     }
 
+    function postComment(userid, bookid) {
+      let content = document.getElementById("comment").value
+      let data = {"id": bookid, "content": content}
+      $.ajax({
+          type: 'PUT',
+          url: '/'+userid+'/postcomment',
+          contentType: 'application/json',
+          data: JSON.stringify(data), // access in body
+      }).done(function () {
+          console.log('SUCCESS');
+      }).fail(function (msg) {
+          console.log('FAIL');
+      }).always(function (msg) {
+          console.log('ALWAYS');
+      });
+    }
 
   </script>
 </head>
