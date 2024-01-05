@@ -61,7 +61,7 @@ controller.signup = async (req, res) => {
                 message: "You can now login using your registration!",
             });
         } else {
-            return res.render("/signup", {
+            return res.render("signup", {
                 layout: "guestlayout",
                 message: "Account with the given email existed!",
             });
