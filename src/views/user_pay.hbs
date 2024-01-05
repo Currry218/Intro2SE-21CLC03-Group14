@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/css/header.css">
 
 <div class="container">
-<div class="space"></div>
+{{!-- <div class="space"></div> --}}
 <!-- start: Payment -->
 <div class="pay-contain">
     <section class="payment-section">
@@ -40,18 +40,18 @@
                     </div>
                 </div>
                 <div class="payment-right">
-                    <form action="" class="payment-form">
-                        <h1 class="payment-title">Payment Details</h1>
+                    <form action="/{{userid}}/purchase" class="payment-form" method="POST" enctype="application/x-www-form-urlencoded">                         
+                    <h1 class="payment-title">Payment Details</h1>
                         <div class="payment-method">
-                            <input type="radio" name="payment-method" id="method-1" checked>
+                            <input type="radio" name="payment" id="method-1" checked>
                             <label for="method-1" class="payment-method-item">
                                 <img src="/img/pay/visa.png" alt="/img/logoicon.png">
                             </label>
-                            <input type="radio" name="payment-method" id="method-2">
+                            <input type="radio" name="payment" id="method-2">
                             <label for="method-2" class="payment-method-item">
                                 <img src="/img/pay/mastercard.png" alt="/img/logoicon.png">
                             </label>
-                            <input type="radio" name="payment-method" id="method-3">
+                            <input type="radio" name="payment" id="method-3">
                             <label for="method-3" class="payment-method-item">
                                 <img src="/img/pay/paypal.png" alt="/img/logoicon.png">
                         </div>
@@ -73,6 +73,7 @@
                                 <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
                             </div>
                         </div>
+                        <input type="hidden" name="money" value="{{totalPrice}}">
                         <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Pay</button>
                     </form>
                 </div>

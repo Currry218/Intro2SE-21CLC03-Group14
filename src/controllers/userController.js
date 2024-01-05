@@ -298,7 +298,14 @@ controller.showDetails = async (req, res) => {
 controller.showRegister = (req, res) => {
 	res.render("user_register", { title: "Register Book", layout: "userlayout", userid: res.locals.userid});
 }
+controller.Purchase = async (req, res) => {
+	// let {payment, money} = req.body;
+	// console.log(payment, money);
+	// console.log(req.body);
+	// console.log(req.query);
 
+	res.redirect("/" + res.locals.userid);
+}
 controller.addCart = async (req, res) => {
 	let { id } = req.body;
 	let userid = res.locals.userid;
@@ -464,7 +471,7 @@ controller.postComment = async (req, res) => {
     console.log(id, content);
 	await models.Review.create({ userId: res.locals.userid, bookId: id, content: content});
 	// Sua sau
-	return res.redirect("/" + res.locals.userid + "/details/" + id);
+	// return res.redirect("/" + res.locals.userid + "/details/" + id);
     
 }
 
