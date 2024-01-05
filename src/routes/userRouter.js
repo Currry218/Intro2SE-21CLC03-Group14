@@ -11,7 +11,7 @@ router.get("/wishlist", controller.showWishlist);
 router.get("/profile", controller.showProfile);
 router.get("/cart", controller.showCart);
 router.get("/pay", controller.showPay);
-router.get("/purchase", controller.Purchase);
+router.post("/purchase", controller.purchase);
 
 router.get("/register", controller.showRegister);
 router.get("/", controller.show);

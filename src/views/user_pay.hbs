@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="payment-right">
-                    <form action="/{{userid}}/purchase" class="payment-form" method="POST" enctype="application/x-www-form-urlencoded">                         
+                    <form action="/{{userid}}/purchase" class="payment-form" method="POST">                         
                     <h1 class="payment-title">Payment Details</h1>
                         <div class="payment-method">
                             <input type="radio" name="payment" id="method-1" checked>
@@ -73,7 +73,7 @@
                                 <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
                             </div>
                         </div>
-                        <input type="hidden" name="money" value="{{totalPrice}}">
+                        <input type="hidden" name="totalAddUp" value={{totalPrice}}>
                         <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Pay</button>
                     </form>
                 </div>

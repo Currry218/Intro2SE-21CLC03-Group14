@@ -298,12 +298,9 @@ controller.showDetails = async (req, res) => {
 controller.showRegister = (req, res) => {
 	res.render("user_register", { title: "Register Book", layout: "userlayout", userid: res.locals.userid});
 }
-controller.Purchase = async (req, res) => {
-	// let {payment, money} = req.body;
-	// console.log(payment, money);
-	// console.log(req.body);
-	// console.log(req.query);
-
+controller.purchase = async (req, res) => {
+	let { totalAddUp } = req.body;
+	console.log(totalAddUp);
 	res.redirect("/" + res.locals.userid);
 }
 controller.addCart = async (req, res) => {
