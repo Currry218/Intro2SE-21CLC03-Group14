@@ -8,6 +8,28 @@ const session = require("express-session");
 
 app.use(express.static(__dirname +"/html"));
 
+// Handle file uploading
+const multer = require("multer");
+const fs = require("fs");
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, "./upload");
+	},
+	filename: (req, file, cb) => {
+		cb(null, Date.now() + "-" + file.originalname);
+	},
+});
+
+const uploadStorage = multer({ storage: storage });
+
+app.post("/fileupload", uploadStorage.single("file"), (req, res) => {
+	console.log(req.file);    
+	return res.send("Upload successully!");
+});
+
+// End of handling file upload
+
 
 app.engine(
     "hbs",
