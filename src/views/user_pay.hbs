@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/pay.css">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/header.css">
-    
+
 <div class="container">
 <div class="space"></div>
 <!-- start: Payment -->
@@ -18,27 +18,22 @@
                     </div>
                     <div class="payment-content">
                         <div class="payment-body">
+                            {{#each cartbooks}}
                             <div class="payment-plan">
                                 <!-- <div class="payment-book"></div> -->
                                 <div class="payment-plan-info">
-                                    <div class="payment-plan-info-name">Book</div>
-                                    <div class="payment-plan-info-price">$20.00</div>
+                                    <div class="payment-plan-info-name">{{title}}</div>
+                                    <div class="payment-plan-info-price">${{price}}</div>
                                 </div>
-                                <a href="#" class="payment-plan-change">Change</a>
+                                <a href="/{{../userid}}/cart" class="payment-plan-change">Change</a>
                             </div>
+                            {{/each}}
+                            
                             <div class="payment-summary">
-                                <div class="payment-summary-item">
-                                    <div class="payment-summary-name">Additional fee</div>
-                                    <div class="payment-summary-price">$0</div>
-                                </div>
-                                <div class="payment-summary-item">
-                                    <div class="payment-summary-name">Discount 10%</div>
-                                    <div class="payment-summary-price">-$2.00</div>
-                                </div>
                                 <div class="payment-summary-divider"></div>
                                 <div class="payment-summary-item payment-summary-total">
                                     <div class="payment-summary-name">Total</div>
-                                    <div class="payment-summary-price">$18.00</div>
+                                    <div class="payment-summary-price">${{totalPrice}}</div>
                                 </div>
                             </div>
                         </div>

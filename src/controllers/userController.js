@@ -174,11 +174,36 @@ controller.showCart = async (req, res) => {
 		totalPrice += parseFloat(cartbooks[i].price);
 	}
 
-	res.render("user_cart", { title: "Cart" , layout: "userlayout", userid: res.locals.userid, cartbooks, totalPrice});
+	res.render("user_cart", { title: "Cart" , layout: "userlayout", userid: res.locals.userid, cartbooks, totalPrice, userid: res.locals.userid});
 };
 
 controller.showPay = async (req, res) => {
-	res.render("user_pay", {title: "Pay", layout: "userlayout", userid: res.locals.userid});
+	const user = await models.User.findOne({
+		attributes: [
+			"cart",
+		],
+		where: {
+			id: res.locals.userid
+		}
+	});
+
+	const cartbooks = await models.Book.findAll({
+		attributes: [
+			"id",
+			"title",
+			"price",
+		],
+		where: {
+			id: user.cart
+		}
+	});
+
+	var totalPrice = 0.0;
+	for (var i=0; i<cartbooks.length; i++) {
+		totalPrice += parseFloat(cartbooks[i].price);
+	}
+
+	res.render("user_pay", {title: "Pay", layout: "userlayout", userid: res.locals.userid, cartbooks, totalPrice});
 }
 
 controller.editUser = async (req, res) => {
