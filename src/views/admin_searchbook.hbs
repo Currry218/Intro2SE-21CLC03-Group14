@@ -1,0 +1,37 @@
+
+<link rel="stylesheet" href="/css/searchbook.css">
+<link rel="stylesheet" href="/css/book.css">
+<link rel="stylesheet" href="/css/header.css">
+
+<div class="container">
+  <div class="annouce">Searching result for: {{search}} </div>
+  <hr size="4px"/>
+  <div class="product-head">
+   <div class="row row-cols-5">
+    {{#each books}}
+    <div class="col">
+      <div class="single-explore-item">
+        <div class="single-explore-img">
+          <a href = "/admin/details/{{id}}"><img src={{imagePath}} alt="/img/logoicon.png"></a>
+        </div>
+        <div class="single-explore-txt bg-theme-5">
+          <h2><a href="/admin/details/{{id}}">{{title}}</a></h2>
+          <p class="explore-rating-price">
+            <span class="explore-price-box">
+              price:
+              <span class="explore-price">{{price}}</span>
+            </span>
+            <span class="explore-price-genne">
+              novel {{!-- thiếu genre --}}
+            </span>
+            <a  href="#!">{{author}}</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+
+</div>

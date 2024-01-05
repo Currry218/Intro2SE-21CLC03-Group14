@@ -360,5 +360,25 @@ controller.deleteUser = async (req, res) => {
 		return res.redirect("/admin/waitlist");
 	  }
 }
+controller.search = async (req, res) => {
+    let {search} = req.body;
+    let books = await models.Book.findAll({
+		attributes: [
+		  "id",
+		  "title",
+		  "author",
+		  "imgData",
+		  "price",
+		  "tags",
+		],
+		where: {
+			title: {[Sequelize.Op.iLike]: Sequelize.fn('LOWER', Sequelize.literal(`'%${search.toLowerCase()}%'`)),}
+		},
 
+		order: [['updatedAt', 'DESC']], // Sorting by updatedAt in descending order
+		limit: 5
+	});
+	convertAll(books);
+	res.render('admin_searchbook', { title: "Search" , layout: "userlayout", trangchu: false, userid: res.locals.userid, search, books});
+}
 module.exports = controller;

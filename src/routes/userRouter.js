@@ -12,6 +12,7 @@ router.get("/profile", controller.showProfile);
 router.get("/cart", controller.showCart);
 router.get("/pay", controller.showPay);
 router.post("/purchase", controller.purchase);
+router.post("/search", controller.search);
 
 router.get("/register", controller.showRegister);
 router.get("/", controller.show);

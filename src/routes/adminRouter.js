@@ -9,6 +9,7 @@ router.get("/reportbook", controller.showReportBook);
 router.get("/reportacc", controller.showReportAcc);
 router.get("/waitlist", controller.showWaitlist);
 router.get("/", controller.show);
+router.post("/search", controller.search);
 
 router.put("/updatebook", controller.updateBook);
 router.delete("/deletebook", controller.deleteBook);
