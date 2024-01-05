@@ -187,11 +187,22 @@
 				</div>
 				{{/with}}
 				<textarea id="comment" name="comment"></textarea><div class="row"></div>
-				<button class="comment-submit" onclick="postComment('{{userid}}', '{{bookid}}')">Comment</button>
+				<button class="comment-submit" onclick="postComment('{{userid}}', '{{bookid}}')" onsubmit="return validateForm()">Comment</button>
 			</form>
 		</div>
 	</div>
-	
+<script>
+    function validateForm() {
+        var textareaValue = document.getElementById('comment').value;
+
+        if (textareaValue.trim() === '') {
+            return false; // Prevent form submission
+        }
+
+        // If the textarea is not empty, allow the form submission
+        return true;
+    }
+</script>
 </div>
 </div>
 

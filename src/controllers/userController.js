@@ -535,10 +535,12 @@ controller.registerBook = async (req, res) => {
 
 controller.postComment = async (req, res) => {
     let {id, content} = req.body;
+	if(content != ''){
     console.log(id, content);
 	await models.Review.create({ userId: res.locals.userid, bookId: id, content: content});
+	}
 	// Sua sau
-	// return res.redirect("/" + res.locals.userid + "/details/" + id);
+	return res.redirect("/" + res.locals.userid + "/details/" + id);
     
 }
 controller.search = async (req, res) => {
