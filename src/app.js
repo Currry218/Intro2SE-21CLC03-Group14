@@ -70,7 +70,7 @@ app.engine(
 						month: 'long',           
 						day: 'numeric',         
 					});       
-			},    
+			},
 			paginateHelper: paginate.createPagination, 
 			},   
 		}),

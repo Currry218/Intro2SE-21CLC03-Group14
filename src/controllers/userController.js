@@ -438,31 +438,26 @@ controller.removeWishlist = async (req, res) => {
 }
 
 controller.registerBook = async (req, res) => {
-	// const bookCover = req.file;
 	const { buffer } = req.file;
-	console.log(buffer);
-
-	const dataString = buffer.toString('base64'); // Convert buffer to base64-encoded string
-	const imgSrc = `data:image/${req.file.mimetype};base64,${dataString}`;
-
+	// const dataString = buffer.toString('base64'); // Convert buffer to base64-encoded string
+	// const imgSrc = `data:image/${req.file.mimetype};base64,${dataString}`;
 	// res.render("temp", {title: "Product", layout: "userlayout", imgSrc});
 
     // if (!bookCover) {
     //     // return res.status(400).send('No file uploaded.');
     // }
+	const tags = Array.isArray(req.body.tags) ? req.body.tags : [req.body.tags];
+	const isVerified = false;
+	let {title, filePath, price, description} = req.body;
+	let ownerId = res.locals.userid;
 
-	// const tags = req.body.tags;
-	// const isVerified = false;
-	// let {title, filePath, price, description} = req.body;
-	// let ownerId = res.locals.userid;
-
-	// try {
-	// 	await models.Book.create({title, ownerId, filePath, price, description, isVerified, tags});
-	// 	return res.redirect("/" + res.locals.userid + "/profile");
-	// } catch (error) {
-	// 	console.error(error);
-	// 	return res.redirect("/" + res.locals.userid + "/");
-	// }
+	try {
+		await models.Book.create({title, ownerId, filePath, price, description, isVerified, tags, imgData: buffer});
+		return res.redirect("/" + res.locals.userid + "/profile");
+	} catch (error) {
+		console.error(error);
+		return res.redirect("/" + res.locals.userid + "/");
+	}
 }
 controller.postComment = async (req, res) => {
     let {id, content} = req.body;

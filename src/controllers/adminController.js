@@ -2,13 +2,34 @@ const controller = {};
 const models = require("../models");
 const Sequelize = require('sequelize');
 
+const mimeType = 'image/jpg';
+const toImg = function (buffer, mimetype) {
+    return `data:image/${mimetype};base64,${buffer.toString('base64')}`;
+};
+function convertOne(book) {
+	if (book.imgData) {
+		book.imagePath = toImg(book.imgData, mimeType);
+	} else {
+		book.imagePath = null;
+	}
+}
+function convertAll(books) {
+	for (const book of books) {
+		if (book.imgData) {
+			book.imagePath = toImg(book.imgData, mimeType);
+		} else {
+			book.imagePath = null;
+		}
+	}
+}
+
 controller.show = async (req, res) => {
 	const newbooks = await models.Book.findAll({
 		attributes: [
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -18,13 +39,14 @@ controller.show = async (req, res) => {
 		order: [['updatedAt', 'DESC']], // Sorting by updatedAt in descending order
 		limit: 5
 	});
+	convertAll(newbooks);
 
 	const trendingbooks = await models.Book.findAll({
 		attributes: [
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -34,13 +56,14 @@ controller.show = async (req, res) => {
 		order: [[Sequelize.literal('ARRAY_LENGTH("buyer", 1)'), 'DESC']],
 		limit: 5
 	});
+	convertAll(trendingbooks);
 
 	const allbooks = await models.Book.findAll({
 		attributes: [
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -50,6 +73,7 @@ controller.show = async (req, res) => {
 		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
 		limit: 5
 	});
+	convertAll(allbooks);
 
 	res.render('admin_hp', { title: "Homepage" , layout: "adminlayout", trangchu: true, newbooks, trendingbooks, allbooks});
 }
@@ -60,7 +84,7 @@ controller.showAll = async (req, res) => {
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -69,6 +93,8 @@ controller.showAll = async (req, res) => {
 		},
 		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
 	});
+	convertAll(allbooks);
+
 	res.render('allbook', { title: "All", layout: "adminlayout", showAll: true, allbooks});
 }
 
@@ -81,7 +107,7 @@ controller.showDetails = async (req, res) => {
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 			"description",
@@ -90,6 +116,7 @@ controller.showDetails = async (req, res) => {
 			id: res.locals.bookid
 		},
 	});
+	convertOne(book);
 
 	const reviews = await models.Review.findAll({
 		attributes: [
@@ -127,7 +154,7 @@ controller.showWaitlist = async (req, res) => {
 			"title",
 			"owner",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"description",
 			"tags",
@@ -136,6 +163,8 @@ controller.showWaitlist = async (req, res) => {
 			isVerified: false
 		}
 	})
+	convertAll(waitingbooks);
+
 	res.render('admin_waitlist', { title: "Waiting Posts", layout: "adminlayout", waitlist: true, waitingbooks});
 }
 
@@ -158,10 +187,14 @@ controller.showReportBook = async (req, res) => {
 			},
 			{
 				model: models.Book,
-				attributes: ["id", "title", "author", "imagePath", "price"]
+				attributes: ["id", "title", "author", "imgData", "price"]
 			}
 		]
 	});
+	for (const rp of reportlists) {
+		convertOne(rp.Book);
+	}
+	
 
 	res.render('admin_rpbook', { title: "Books Management", layout: "adminlayout", rpbook: true, reportlists});
 }
@@ -213,7 +246,7 @@ controller.showProfile = async (req, res) => {
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -221,13 +254,14 @@ controller.showProfile = async (req, res) => {
 			id: userInfo.boughtBooks
 		}
 	})
+	convertAll(boughtbooks);
 
 	const sellingbooks = await models.Book.findAll({
 		attributes: [
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 			"ownerId",
@@ -237,6 +271,7 @@ controller.showProfile = async (req, res) => {
 			isVerified: true
 		}
 	})
+	convertAll(sellingbooks);
 
 	res.render("user_profile", { title: "Profile" , layout: "userlayout", userid: req.params.id, userInfo, boughtbooks, sellingbooks});
 }
