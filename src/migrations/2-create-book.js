@@ -15,6 +15,14 @@ module.exports = {
       owner: {
         type: Sequelize.STRING
       },
+      pdfData: {
+        type: Sequelize.BLOB, // 'long' indicates a BLOB column
+        allowNull: true, // or false, depending on your requirements
+      },
+      imgData: {
+        type: Sequelize.BLOB, // 'long' indicates a BLOB column
+        allowNull: true, // or false, depending on your requirements
+      },
       ownerId: {
         allowNull: false,
         type: Sequelize.INTEGER,

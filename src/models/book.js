@@ -37,6 +37,8 @@ module.exports = (sequelize, DataTypes) => {
     author: DataTypes.STRING,
     imagePath: DataTypes.STRING,
     filePath: DataTypes.STRING,
+    imgData: DataTypes.BLOB,
+    pdfData: DataTypes.BLOB,
     price: DataTypes.DECIMAL,
     tags: DataTypes.ARRAY(DataTypes.STRING),
     isVerified: DataTypes.BOOLEAN,

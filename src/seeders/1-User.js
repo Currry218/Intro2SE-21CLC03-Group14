@@ -41,7 +41,7 @@ module.exports = {
     },
     {
         username: 'premiumUser',
-        password: 'premiumUser123',
+        password: '1',
         email: 'premiumUser@gmail.com',
         balance: 72.0,
         imagePath: '/img/clients/c3.png',
@@ -54,7 +54,7 @@ module.exports = {
     },
     {
         username: 'bookLover',
-        password: 'bookLover123',
+        password: '1',
         email: 'bookLover@gmail.com',
         balance: 11.0,
         imagePath: '/img/clients/c2.png',
@@ -67,7 +67,7 @@ module.exports = {
     },
     {
         username: 'avidReader',
-        password: 'avidReader123',
+        password: '1',
         email: 'avidReader@gmail.com',
         balance: 43.0,
         imagePath: '/img/clients/c2.png',
@@ -80,7 +80,7 @@ module.exports = {
     },
     {
         username: 'fantasyLover',
-        password: 'fantasyLover123',
+        password: '1',
         email: 'fantasyLover@gmail.com',
         balance: 76.0,
         imagePath: '/img/clients/person.png',
@@ -93,7 +93,7 @@ module.exports = {
     },
     {
         username: 'budgetReader',
-        password: 'budgetReader123',
+        password: '1',
         email: 'budgetReader@gmail.com',
         balance: 91.0,
         imagePath: '/img/clients/c1.png',
@@ -106,7 +106,7 @@ module.exports = {
     },
     {
         username: 'historyBuff',
-        password: 'historyBuff123',
+        password: '1',
         email: 'historyBuff@gmail.com',
         balance: 7.0,
         imagePath: '/img/clients/c3.png',
@@ -119,7 +119,7 @@ module.exports = {
     },
     {
         username: 'platinumUser',
-        password: 'platinumUser123',
+        password: '1',
         email: 'platinumUser@gmail.com',
         balance: 69.0,
         imagePath: '/img/clients/person.png',
@@ -132,7 +132,7 @@ module.exports = {
     },
     {
         username: 'collectorReader',
-        password: 'collectorReader123',
+        password: '1',
         email: 'collectorReader@gmail.com',
         balance: 0.0,
         imagePath: '/img/clients/c4.png',
@@ -145,7 +145,7 @@ module.exports = {
     },
     {
         username: 'sciFiFan',
-        password: 'sciFiFan123',
+        password: '1',
         email: 'sciFiFan@gmail.com',
         balance: 18.0,
         imagePath: '/img/clients/c4.png',
@@ -158,7 +158,7 @@ module.exports = {
     },
     {
         username: 'user0',
-        password: 'user0123',
+        password: '1',
         email: 'user0@gmail.com',
         balance: 82.0,
         imagePath: '/img/clients/c4.png',
@@ -171,7 +171,7 @@ module.exports = {
     },
     {
         username: 'user1',
-        password: 'user1123',
+        password: '1',
         email: 'user1@gmail.com',
         balance: 2.0,
         imagePath: '/img/clients/c4.png',
@@ -184,7 +184,7 @@ module.exports = {
     },
     {
         username: 'user2',
-        password: 'user2123',
+        password: '1',
         email: 'user2@gmail.com',
         balance: 15.0,
         imagePath: '/img/clients/c3.png',
@@ -197,7 +197,7 @@ module.exports = {
     },
     {
         username: 'user3',
-        password: 'user3123',
+        password: '1',
         email: 'user3@gmail.com',
         balance: 43.0,
         imagePath: '/img/clients/c4.png',
@@ -210,7 +210,7 @@ module.exports = {
     },
     {
         username: 'user4',
-        password: 'user4123',
+        password: '1',
         email: 'user4@gmail.com',
         balance: 28.0,
         imagePath: '/img/clients/c4.png',
@@ -223,7 +223,7 @@ module.exports = {
     },
     {
         username: 'user5',
-        password: 'user5123',
+        password: '1',
         email: 'user5@gmail.com',
         balance: 8.0,
         imagePath: '/img/clients/c2.png',
@@ -236,7 +236,7 @@ module.exports = {
     },
     {
         username: 'user6',
-        password: 'user6123',
+        password: '1',
         email: 'user6@gmail.com',
         balance: 53.0,
         imagePath: '/img/clients/c3.png',
@@ -249,7 +249,7 @@ module.exports = {
     },
     {
         username: 'user7',
-        password: 'user7123',
+        password: '1',
         email: 'user7@gmail.com',
         balance: 11.0,
         imagePath: '/img/clients/person.png',
@@ -262,7 +262,7 @@ module.exports = {
     },
     {
         username: 'user8',
-        password: 'user8123',
+        password: '1',
         email: 'user8@gmail.com',
         balance: 14.0,
         imagePath: '/img/clients/c4.png',
@@ -275,7 +275,7 @@ module.exports = {
     },
     {
         username: 'user9',
-        password: 'user9123',
+        password: '1',
         email: 'user9@gmail.com',
         balance: 69.0,
         imagePath: '/img/clients/person.png',
@@ -288,7 +288,7 @@ module.exports = {
     },
     {
         username: 'user10',
-        password: 'user10123',
+        password: '1',
         email: 'user10@gmail.com',
         balance: 84.0,
         imagePath: '/img/clients/c3.png',
@@ -301,7 +301,7 @@ module.exports = {
     },
     {
         username: 'user11',
-        password: 'user11123',
+        password: '1',
         email: 'user11@gmail.com',
         balance: 41.0,
         imagePath: '/img/clients/c2.png',
@@ -314,7 +314,7 @@ module.exports = {
     },
     {
         username: 'user12',
-        password: 'user12123',
+        password: '1',
         email: 'user12@gmail.com',
         balance: 69.0,
         imagePath: '/img/clients/c2.png',
@@ -327,7 +327,7 @@ module.exports = {
     },
     {
         username: 'user13',
-        password: 'user13123',
+        password: '1',
         email: 'user13@gmail.com',
         balance: 70.0,
         imagePath: '/img/clients/c4.png',
@@ -340,7 +340,7 @@ module.exports = {
     },
     {
         username: 'user14',
-        password: 'user14123',
+        password: '1',
         email: 'user14@gmail.com',
         balance: 75.0,
         imagePath: '/img/clients/person.png',
@@ -353,7 +353,7 @@ module.exports = {
     },
     {
         username: 'user15',
-        password: 'user15123',
+        password: '1',
         email: 'user15@gmail.com',
         balance: 94.0,
         imagePath: '/img/clients/person.png',
@@ -366,7 +366,7 @@ module.exports = {
     },
     {
         username: 'user16',
-        password: 'user16123',
+        password: '1',
         email: 'user16@gmail.com',
         balance: 78.0,
         imagePath: '/img/clients/c2.png',
@@ -379,7 +379,7 @@ module.exports = {
     },
     {
         username: 'user17',
-        password: 'user17123',
+        password: '1',
         email: 'user17@gmail.com',
         balance: 63.0,
         imagePath: '/img/clients/person.png',
@@ -392,7 +392,7 @@ module.exports = {
     },
     {
         username: 'user18',
-        password: 'user18123',
+        password: '1',
         email: 'user18@gmail.com',
         balance: 46.0,
         imagePath: '/img/clients/c1.png',
@@ -405,7 +405,7 @@ module.exports = {
     },
     {
         username: 'user19',
-        password: 'user19123',
+        password: '1',
         email: 'user19@gmail.com',
         balance: 96.0,
         imagePath: '/img/clients/c2.png',
@@ -418,7 +418,7 @@ module.exports = {
     },
     {
         username: 'user20',
-        password: 'user20123',
+        password: '1',
         email: 'user20@gmail.com',
         balance: 45.0,
         imagePath: '/img/clients/c1.png',
@@ -431,7 +431,7 @@ module.exports = {
     },
     {
         username: 'user21',
-        password: 'user21123',
+        password: '1',
         email: 'user21@gmail.com',
         balance: 96.0,
         imagePath: '/img/clients/c3.png',
@@ -444,7 +444,7 @@ module.exports = {
     },
     {
         username: 'user22',
-        password: 'user22123',
+        password: '1',
         email: 'user22@gmail.com',
         balance: 24.0,
         imagePath: '/img/clients/c4.png',
@@ -457,7 +457,7 @@ module.exports = {
     },
     {
         username: 'user23',
-        password: 'user23123',
+        password: '1',
         email: 'user23@gmail.com',
         balance: 65.0,
         imagePath: '/img/clients/c4.png',
@@ -470,7 +470,7 @@ module.exports = {
     },
     {
         username: 'user24',
-        password: 'user24123',
+        password: '1',
         email: 'user24@gmail.com',
         balance: 21.0,
         imagePath: '/img/clients/c2.png',
@@ -483,7 +483,7 @@ module.exports = {
     },
     {
         username: 'user25',
-        password: 'user25123',
+        password: '1',
         email: 'user25@gmail.com',
         balance: 51.0,
         imagePath: '/img/clients/person.png',
@@ -496,7 +496,7 @@ module.exports = {
     },
     {
         username: 'user26',
-        password: 'user26123',
+        password: '1',
         email: 'user26@gmail.com',
         balance: 99.0,
         imagePath: '/img/clients/c1.png',
@@ -509,7 +509,7 @@ module.exports = {
     },
     {
         username: 'user27',
-        password: 'user27123',
+        password: '1',
         email: 'user27@gmail.com',
         balance: 12.0,
         imagePath: '/img/clients/c4.png',
@@ -522,7 +522,7 @@ module.exports = {
     },
     {
         username: 'user28',
-        password: 'user28123',
+        password: '1',
         email: 'user28@gmail.com',
         balance: 87.0,
         imagePath: '/img/clients/c4.png',
@@ -535,7 +535,7 @@ module.exports = {
     },
     {
         username: 'user29',
-        password: 'user29123',
+        password: '1',
         email: 'user29@gmail.com',
         balance: 86.0,
         imagePath: '/img/clients/c3.png',
