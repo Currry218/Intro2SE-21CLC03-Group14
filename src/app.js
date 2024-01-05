@@ -25,7 +25,25 @@ const uploadStorage = multer({ storage: storage });
 
 app.post("/fileupload", uploadStorage.single("file"), (req, res) => {
 	console.log(req.file);    
-	return res.send("Upload successully!");
+	return res.send("Upload successfully!");
+});
+
+app.get('/fileupload/display', function(req, res, next) {
+    const folder = './upload/';
+
+    fs.readdirSync(folder).forEach(file => {
+        // console.log(file);
+
+        var stream = fs.createReadStream(folder + file);
+        var filename = file;
+
+        filename = encodeURIComponent(filename);
+
+        res.setHeader('Content-disposition', 'inline; filename="' + filename + '"');
+        res.setHeader('Content-type', 'application/pdf');
+
+        stream.pipe(res);
+    });
 });
 
 // End of handling file upload
