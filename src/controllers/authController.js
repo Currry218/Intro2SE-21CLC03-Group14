@@ -1,3 +1,6 @@
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // Number of salt rounds for bcrypt hashing
+
 const controller = {};
 const User = require("../models").User;
 
@@ -17,26 +20,42 @@ controller.showLogin = (req, res) => {
 controller.login = async (req, res) => {
     let { email, password } = req.body;
     let reqUrl = req.body.reqUrl ? req.body.reqUrl : "/";
-    let user = await User.findOne({
-        attributes: [ "id", "username", "password", "email", "balance", "isAdmin"],
-        where: { email, password },
-    });
     
-    if (user) {
-        if (reqUrl=="/" && user.isAdmin == true) {
-            reqUrl = "/admin";
-        } else if (reqUrl=="/" && user.isAdmin == false) {
-            reqUrl = `/${user.id}`;
-        }
+    try {
+        // Fetch user by email
+        const user = await User.findOne({
+            attributes: ["id", "username", "password", "email", "balance", "isAdmin"],
+            where: { email },
+        });
 
-        req.session.user = user;
-        return res.redirect(reqUrl);
+        if (user) {
+            const match = await bcrypt.compare(password, user.password);
+
+            if (match) {
+                if (reqUrl === "/" && user.isAdmin) {
+                    reqUrl = "/admin";
+                } else if (reqUrl === "/" && !user.isAdmin) {
+                    reqUrl = `/${user.id}`;
+                }
+
+                req.session.user = user;
+                return res.redirect(reqUrl);
+            }
+        }
+        
+        return res.render("login", {
+            layout: "guestlayout",
+            message: "Wrong username or password!",
+            reqUrl,
+        });
+    } catch (error) {
+        console.error(error);
+        return res.render("login", {
+            layout: "guestlayout",
+            message: "An error occurred during login.",
+            reqUrl,
+        });
     }
-    return res.render("login", {
-        layout: "guestlayout",
-        message: "Wrong username or password!",
-        reqUrl,
-    });
 };
 
 controller.showSignup = (req, res) => {
@@ -46,38 +65,49 @@ controller.showSignup = (req, res) => {
 }
 
 controller.signup = async (req, res) => {
-    let { username, email, password, isAdmin} = req.body;
+    let { username, email, password, isAdmin } = req.body;
     let wishlist = [];
     let cart = [];
     let boughtBooks = [];
     isAdmin = isAdmin === 'on';
+
     try {
-        const userfound = await User.findOne({
+        const userExists = await User.findOne({
             attributes: ["id", "email"],
-            where: {email},
+            where: { email },
         });
 
-        if (!userfound) {
-            await User.create({ username, password, email, isAdmin, wishlist, cart, boughtBooks});
-            return res.render("login", {
-                layout: "guestlayout",
-                message: "You can now login using your registration!",
-            });
-        } else {
+        if (userExists) {
             return res.render("signup", {
                 layout: "guestlayout",
-                message: "Account with the given email existed!",
+                message: "An account with the given email already exists!",
             });
         }
-        
+
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        await User.create({
+            username,
+            password: hashedPassword,
+            email,
+            isAdmin,
+            wishlist,
+            cart,
+            boughtBooks,
+        });
+
+        return res.render("login", {
+            layout: "guestlayout",
+            message: "You can now login using your registration!",
+        });
     } catch (error) {
-      console.error(error);
-      return res.render("signup", {
-        layout: "guestlayout",
-        message: "Can not register new account!",
-      });
+        console.error(error);
+        return res.render("signup", {
+            layout: "guestlayout",
+            message: "An error occurred during registration.",
+        });
     }
-}
+};
 
 controller.loggedIn = async (req, res, next) => {
     if (req.session.user) {
