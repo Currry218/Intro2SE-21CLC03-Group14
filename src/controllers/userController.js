@@ -2,13 +2,34 @@ const controller = {};
 const models = require("../models");
 const Sequelize = require('sequelize');
 
+const mimeType = 'image/jpg';
+const toImg = function (buffer, mimetype) {
+    return `data:image/${mimetype};base64,${buffer.toString('base64')}`;
+};
+function convertOne(book) {
+	if (book.imgData) {
+		book.imagePath = toImg(book.imgData, mimeType);
+	} else {
+		book.imagePath = null;
+	}
+}
+function convertAll(books) {
+	for (const book of books) {
+		if (book.imgData) {
+			book.imagePath = toImg(book.imgData, mimeType);
+		} else {
+			book.imagePath = null;
+		}
+	}
+}
+
 controller.show = async (req, res) => {
 	const newbooks = await models.Book.findAll({
 		attributes: [
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -18,13 +39,14 @@ controller.show = async (req, res) => {
 		order: [['updatedAt', 'DESC']], // Sorting by updatedAt in descending order
 		limit: 5
 	});
+	convertAll(newbooks);
 
 	const trendingbooks = await models.Book.findAll({
 		attributes: [
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -34,13 +56,14 @@ controller.show = async (req, res) => {
 		order: [[Sequelize.literal('ARRAY_LENGTH("buyer", 1)'), 'DESC']],
 		limit: 5
 	});
+	convertAll(trendingbooks);
 
 	const allbooks = await models.Book.findAll({
 		attributes: [
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -50,6 +73,7 @@ controller.show = async (req, res) => {
 		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
 		limit: 5
 	});
+	convertAll(allbooks);
 
 	res.render('user_hp', { title: "Homepage" , layout: "userlayout", trangchu: true, userid: res.locals.userid, newbooks, trendingbooks, allbooks});
 }
@@ -60,7 +84,7 @@ controller.showAll = async (req, res) => {
 		  "id",
 		  "title",
 		  "author",
-		  "imagePath",
+		  "imgData",
 		  "price",
 		  "tags",
 		],
@@ -69,7 +93,81 @@ controller.showAll = async (req, res) => {
 		},
 		order: [['id', 'DESC']], // Sorting by updatedAt in descending order
 	});
+	convertAll(allbooks);
+
 	res.render('allbook', { title: "All", layout: "userlayout", showAll: true, userid: res.locals.userid, allbooks});
+}
+
+controller.showDetails = async (req, res) => {
+	if (req.params.id) {
+		res.locals.bookid = req.params.id;
+	}
+	const book = await models.Book.findOne({
+		attributes: [
+			"id",
+			"title",
+			"author",
+			"imgData",
+			"price",
+			"tags",
+			"description",
+		],
+		where: {
+			id: res.locals.bookid
+		},
+	});
+	convertOne(book);
+
+	const reviews = await models.Review.findAll({
+		attributes: [
+			"content",
+			"createdAt",
+		],
+		where: {
+			bookId: book.id
+		},
+		include: [
+			{
+				model: models.User,
+				attributes: ["username", "imagePath"]
+			}
+		]
+	})
+
+	const user = await models.User.findOne({
+		attributes: [
+			"username",
+			"imagePath",
+			"boughtBooks"
+		],
+		where: {
+			id: res.locals.userid
+		}
+	});
+
+	const tagsArray = Array.isArray(book.tags) ? book.tags : [book.tags];
+
+	// const rcm = await models.Book.findAll({
+	// 	attributes: [
+	// 	"id",
+	// 	"title",
+	// 	"author",
+	// 	"imagePath",
+	// 	"price",
+	// 	"tags",
+	// 	],
+	// 	where: {
+	// 		tags: {[Sequelize.Op.overlap]: tagsArray,},
+	// 		id: {[Sequelize.Op.ne]: book.id,},
+	// 	},
+	// 	limit: 5,
+	// });	
+
+	if (user.boughtBooks.includes(book.id)) {
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user, showlink: true});
+	} else {
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user});
+	}	
 }
 
 controller.showWishlist = async (req, res) => {
@@ -87,7 +185,7 @@ controller.showWishlist = async (req, res) => {
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -95,6 +193,7 @@ controller.showWishlist = async (req, res) => {
 			id: user.wishlist
 		}
 	})
+	convertAll(wishlistbooks);
 	
 	res.render("user_wishlist", { title: "Wishlist" , layout: "userlayout", userid: res.locals.userid, wishlistbooks});
 };
@@ -117,7 +216,7 @@ controller.showProfile = async (req, res) => {
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -125,13 +224,14 @@ controller.showProfile = async (req, res) => {
 			id: userInfo.boughtBooks
 		}
 	})
+	convertAll(boughtbooks);
 
 	const sellingbooks = await models.Book.findAll({
 		attributes: [
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 			"ownerId",
@@ -141,6 +241,7 @@ controller.showProfile = async (req, res) => {
 			isVerified: true
 		}
 	})
+	convertAll(sellingbooks);
 
 	res.render("user_profile", { title: "Profile" , layout: "userlayout", userid: res.locals.userid, userInfo, boughtbooks, sellingbooks});
 };
@@ -160,7 +261,7 @@ controller.showCart = async (req, res) => {
 			"id",
 			"title",
 			"author",
-			"imagePath",
+			"imgData",
 			"price",
 			"tags",
 		],
@@ -168,6 +269,7 @@ controller.showCart = async (req, res) => {
 			id: user.cart
 		}
 	});
+	convertAll(cartbooks);
 
 	var totalPrice = 0.0;
 	for (var i=0; i<cartbooks.length; i++) {
@@ -223,77 +325,7 @@ controller.showPay = async (req, res) => {
 
 // }
 
-controller.showDetails = async (req, res) => {
-	if (req.params.id) {
-		res.locals.bookid = req.params.id;
-	}
-	const book = await models.Book.findOne({
-		attributes: [
-			"id",
-			"title",
-			"author",
-			"imagePath",
-			"price",
-			"tags",
-			"description",
-			"filePath",
-		],
-		where: {
-			id: res.locals.bookid
-		},
-	});
 
-	const reviews = await models.Review.findAll({
-		attributes: [
-			"content",
-			"createdAt",
-		],
-		where: {
-			bookId: book.id
-		},
-		include: [
-			{
-				model: models.User,
-				attributes: ["username", "imagePath"]
-			}
-		]
-	})
-
-	const user = await models.User.findOne({
-		attributes: [
-			"username",
-			"imagePath",
-			"boughtBooks"
-		],
-		where: {
-			id: res.locals.userid
-		}
-	});
-
-	const tagsArray = Array.isArray(book.tags) ? book.tags : [book.tags];
-
-	const rcm = await models.Book.findAll({
-		attributes: [
-		"id",
-		"title",
-		"author",
-		"imagePath",
-		"price",
-		"tags",
-		],
-		where: {
-			tags: {[Sequelize.Op.overlap]: tagsArray,},
-			id: {[Sequelize.Op.ne]: book.id,},
-		},
-		limit: 5,
-	});	
-
-	if (user.boughtBooks.includes(book.id)) {
-		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user, showlink: true});
-	} else {
-		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, bookid: res.locals.bookid, reviews, user});
-	}	
-}
 
 controller.showRegister = (req, res) => {
 	res.render("user_register", { title: "Register Book", layout: "userlayout", userid: res.locals.userid});
@@ -463,6 +495,7 @@ controller.registerBook = async (req, res) => {
 		return res.redirect("/" + res.locals.userid + "/");
 	}
 }
+
 controller.postComment = async (req, res) => {
     let {id, content} = req.body;
     console.log(id, content);
