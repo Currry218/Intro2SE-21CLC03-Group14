@@ -65,7 +65,7 @@
 				{{!-- <button type = "button" class = "btn">Buy now</button>
 				<button type = "button" class = "btn">Download</button> --}}
 				{{#if ../showlink}}
-					<a href="https://csis.pace.edu/%7Emarchese/CS389/L9/Use%20Case%20Diagrams.pdf" target="_blank" class="btn">Read online</a>
+					<a href="{{filePath}}" target="_blank" class="btn">Read online</a>
 				{{else}}
 					<button type = "button" class = "btn" onclick="addCart('{{../userid}}','{{id}}')">
 					Add to Cart <i class = "fas fa-shopping-cart"></i>

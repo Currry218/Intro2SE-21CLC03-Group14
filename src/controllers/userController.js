@@ -206,22 +206,22 @@ controller.showPay = async (req, res) => {
 	res.render("user_pay", {title: "Pay", layout: "userlayout", userid: res.locals.userid, cartbooks, totalPrice});
 }
 
-controller.editUser = async (req, res) => {
-	let{id, username, password, email, balance, imagePath } = req.body;
-	try{
-		await models.User.update(
-		{username, password, email, balance, imagePath,
-			isAdmin: isAdmin ? true:false},
-		{where: {id}},  
-		);
-		res.send("User updated");
-	} 
-	catch(error) {
-		res.send("Can not add user");
-		console.error(error);
-	}
+// controller.editUser = async (req, res) => {
+// 	let{id, username, password, email, balance, imagePath } = req.body;
+// 	try{
+// 		await models.User.update(
+// 		{username, password, email, balance, imagePath,
+// 			isAdmin: isAdmin ? true:false},
+// 		{where: {id}},  
+// 		);
+// 		res.send("User updated");
+// 	} 
+// 	catch(error) {
+// 		res.send("Can not add user");
+// 		console.error(error);
+// 	}
 
-}
+// }
 
 controller.showDetails = async (req, res) => {
 	if (req.params.id) {
@@ -236,6 +236,7 @@ controller.showDetails = async (req, res) => {
 			"price",
 			"tags",
 			"description",
+			"filePath",
 		],
 		where: {
 			id: res.locals.bookid
@@ -352,7 +353,7 @@ controller.removeCart = async (req, res) => {
 	console.log(user.cart);
 	console.log(user.boughtBooks);
 	if (user.cart.includes(parseInt(id))) {
-		user.cart.splice(user.cart.indexOf(id), 1);
+		user.cart.splice(user.cart.indexOf(parseInt(id)), 1);
 		console.log("After: " + user.cart);
 		try {
 			await models.User.update(
@@ -436,4 +437,31 @@ controller.removeWishlist = async (req, res) => {
 	}
 }
 
+controller.registerBook = async (req, res) => {
+	// const bookCover = req.file;
+	const { buffer } = req.file;
+	console.log(buffer);
+
+	const dataString = buffer.toString('base64'); // Convert buffer to base64-encoded string
+	const imgSrc = `data:image/${req.file.mimetype};base64,${dataString}`;
+
+	// res.render("temp", {title: "Product", layout: "userlayout", imgSrc});
+
+    // if (!bookCover) {
+    //     // return res.status(400).send('No file uploaded.');
+    // }
+
+	// const tags = req.body.tags;
+	// const isVerified = false;
+	// let {title, filePath, price, description} = req.body;
+	// let ownerId = res.locals.userid;
+
+	// try {
+	// 	await models.Book.create({title, ownerId, filePath, price, description, isVerified, tags});
+	// 	return res.redirect("/" + res.locals.userid + "/profile");
+	// } catch (error) {
+	// 	console.error(error);
+	// 	return res.redirect("/" + res.locals.userid + "/");
+	// }
+}
 module.exports = controller;

@@ -3,56 +3,57 @@
 <link rel="stylesheet" href="/css/header.css">
 
 <div class="container">
-  <form>
+  <form action="/{{userid}}/register" method="POST" enctype="multipart/form-data">
     <div class="mb-4">
       <h>Register form</h>
     </div>
     <div class="mb-2">
       <label class="form-label">Cover of the book</label>
-      <input type="file" class="form-control">
+      <input type="file" name="bookcover" class="form-control" required>
     </div>
     <div class="mb-2">
       <label class="form-label">Link drive</label>
-      <input type="text" class="form-control">
+      <input type="text" name="filePath" class="form-control" required>
     </div>
     <div id="name" class="mb-2">
       <label class="form-label">Name of the book</label>
-      <input type="text" class="form-control">
+      <input type="text" name="title" class="form-control" required>
     </div>
     <div id="price" class="mb-2">
       <label class="form-label">Price ($)</label>
-      <input type="text" class="form-control">
+      <input type="number" name="price" min="0" class="form-control">
     </div>
     <div class="mb-2">
       <label class="form-label">Genre</label>
       <div class="list-group">
         <label class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="novel">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="novel">
           Novel
-          <input class="form-check-input me-1" type="checkbox" value="romance">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="romance">
           Romance
-          <input class="form-check-input me-1" type="checkbox" value="horror">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="horror">
           Horror
-          <input class="form-check-input me-1" type="checkbox" value="science-fiction">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="science-fiction">
           Science fiction
-          <input class="form-check-input me-1" type="checkbox" value="history">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="history">
           History
-          <input class="form-check-input me-1" type="checkbox" value="cookbooks">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="cookbooks">
           Cookbooks
-          <input class="form-check-input me-1" type="checkbox" value="poem">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="poem">
           Poem
-          <input class="form-check-input me-1" type="checkbox" value="thriller">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="thriller">
           Thriller
-          <input class="form-check-input me-1" type="checkbox" value="autobiography">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="autobiography">
           Autobiography
-          <input class="form-check-input me-1" type="checkbox" value="other">
+          <input class="form-check-input me-1" name="tags" type="checkbox" value="other">
           Other
         </label>
       </div>
     </div>
     <div class="mb-2">
       <label class="form-label">Brief discription</label>
-      <input type="text" class="form-control" id="discription">
+      <input type="text" name="description" class="form-control" id="discription">
+      {{!-- <input type="hidden" name="isVerified" value="false"> --}}
       <div id="fileHelpId" class="form-text">Write an brief description of the book's content</div>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

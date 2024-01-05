@@ -1,6 +1,9 @@
 const express = require("express");
 const controller = require("../controllers/userController");
 const router = express.Router();
+const multer = require('multer');
+const storage = multer.memoryStorage(); // You can customize storage as needed
+const upload = multer({ storage: storage });
 
 router.get("/details/:id", controller.showDetails);
 router.get("/all", controller.showAll);
@@ -15,5 +18,7 @@ router.put("/addcart", controller.addCart);
 router.put("/removecart", controller.removeCart);
 router.put("/addwishlist", controller.addWishlist);
 router.put("/removewishlist", controller.removeWishlist);
+
+router.post("/register", upload.single('bookcover'), controller.registerBook);
 
 module.exports = router;
