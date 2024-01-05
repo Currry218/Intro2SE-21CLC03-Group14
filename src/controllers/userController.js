@@ -111,6 +111,7 @@ controller.showDetails = async (req, res) => {
 			"price",
 			"tags",
 			"description",
+			"filePath",
 		],
 		where: {
 			id: res.locals.bookid
