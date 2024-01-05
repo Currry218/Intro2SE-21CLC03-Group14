@@ -237,6 +237,7 @@ controller.showDetails = async (req, res) => {
 		attributes: [
 			"username",
 			"imagePath",
+			"boughtBooks",
 		],
 		where: {
 			id: res.locals.userid
@@ -260,7 +261,12 @@ controller.showDetails = async (req, res) => {
 		},
 		limit: 5,
 	});	
-	res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user});
+
+	if (user.boughtBooks.includes(book.id)) {
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user, showlink: true});
+	} else {
+		res.render("productpage", {title: "Product", layout: "userlayout", userid: res.locals.userid, book, reviews, user});
+	}	
 }
 
 controller.showRegister = (req, res) => {
