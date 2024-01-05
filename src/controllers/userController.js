@@ -491,7 +491,7 @@ controller.removeWishlist = async (req, res) => {
 	});
 
 	if (user.wishlist.includes(parseInt(id))) {
-		user.wishlist.splice(user.wishlist.indexOf(id), 1);
+		user.wishlist.splice(user.wishlist.indexOf(parseInt(id)), 1);
 		try {
 			await models.User.update(
 			  { wishlist : user.wishlist },
